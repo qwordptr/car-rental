@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+{% block title %}Zarejestruj się{% endblock %}
+{% block body %}
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        <div class="row main">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <h1 class="title">Rejestracja</h1>
+                    <hr />
+                </div>
+            </div>
+            <div class="main-form main-center register-form">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            {{ form_label(form.username, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder' : 'Podaj nazwę użtytkownika'} }) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            {{ form_label(form.email, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder' : 'Podaj swój email'} }) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            {{ form_label(form.first_name, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    {{ form_widget(form.first_name, { 'attr': {'class': 'form-control', 'placeholder' : 'Podaj imię'} }) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            {{ form_label(form.last_name, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    {{ form_widget(form.last_name, { 'attr': {'class': 'form-control', 'placeholder' : 'Podaj nazwisko'} }) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    {{ form_label(form.gender, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.gender, { 'attr': {'class': 'form-control', 'placeholder' : 'Podaj nazwę użytkownika'} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.birthday, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.birthday, { 'attr': {'class': 'js-datepicker', 'placeholder' : 'Podaj nazwę użytkownika'} }) }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    {{ form_label(form.password.first, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.password.first, { 'attr': {'class': 'form-control', 'placeholder' : 'Podaj hasło'} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.password.second, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.password.second, { 'attr': {'class': 'form-control', 'placeholder' : 'Powtórz hasło'} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    {{ form_widget(form.register, { 'attr': {'class': 'btn btn-primary btn-lg btn-block login-button'} }) }}
+                </div>
+                <div class="login-register">
+                    <a href="index.php">Zaloguj</a>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+    <br>
+
+{% endblock %}
+

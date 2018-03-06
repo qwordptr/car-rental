@@ -13,10 +13,6 @@ AppBundle\Entity\User:
             column: idUser
             generator:
                 strategy: IDENTITY
-    oneToMany:
-        notices:
-            targetEntity: Notice
-            mappedBy: owner
     fields:
         username:
             type: string
