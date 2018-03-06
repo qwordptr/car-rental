@@ -1,0 +1,84 @@
+AppBundle\Entity\User:
+    type: entity
+    table: user
+    repositoryClass: AppBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'id użytkownika'
+            id: true
+            column: idUser
+            generator:
+                strategy: IDENTITY
+    oneToMany:
+        notices:
+            targetEntity: Notice
+            mappedBy: owner
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+                comment: imię
+            column: userName
+        email:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+                comment: 'email użytkownika'
+        first_name:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+                comment: 'imię'
+
+        last_name:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+                comment: 'nazwisko'
+
+        gender:
+            type: string
+            nullable: false
+            length: 15
+            options:
+                fixed: false
+                comment: 'płeć'
+
+        birthday:
+            type: date
+            nullable: false
+            length: 15
+            options:
+                fixed: false
+                comment: 'płeć'
+
+        password:
+            type: string
+            nullable: false
+            length: 200
+            options:
+                fixed: false
+                comment: 'password'
+        salt:
+            type: string
+            nullable: false
+            length: 200
+            options:
+                fixed: false
+                comment: 'salt'
+        isActive:
+            type: boolean
+lifecycleCallbacks: {  }

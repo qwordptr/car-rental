@@ -1,0 +1,22 @@
+AppBundle\Entity\Car:
+    type: entity
+    table: car
+    repositoryClass: AppBundle\Repository\CarRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'id pojazdu'
+            id: true
+            column: id
+            generator:
+                strategy: IDENTITY
+#    oneToOne:
+#          notice:
+#            targetEntity: Notice
+#            mappedBy: car
+    fields:
+
+lifecycleCallbacks: {  }

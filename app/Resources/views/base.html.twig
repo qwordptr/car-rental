@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+
+        <title>{% block title %}Welcomeee!{% endblock %}</title>
+
+
+        <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+        <script src="{{ asset('js/ajax-tabs.js') }}"></script>
+        <script src="{{ asset('js/message.js') }}"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+
+        {% block stylesheets %}
+            <link rel="stylesheet"  href="{{ asset('css/register.css') }}"/>
+            <link rel="stylesheet"  href="{{ asset('css/template.css') }}"/>
+            <link rel="stylesheet"  href="{{ asset('css/lightbox.css') }}"/>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    </head>
+    <body>
+    <div class="container">
+    <div class="navbar navbar-fixed-top top-menu" role="navigation">
+        <div class="container">
+
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Ogłoszenia</a></li>
+                </ul>
+                <form class="navbar-form navbar-left" role="form" action="#">
+                  <span class="input-group">
+                    <input type="text" class="form-control input-md" name="title" placeholder="Wyszukaj..." />
+                  <span class="input-group-btn">
+                  <button class="btn btn-info btn-md" id="addBookButton"><i class="glyphicon glyphicon-search"></i></button>
+                  </span>
+
+
+                  </span>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="new_notice"><a href="#"><span class="glyphicon glyphicon-plus"></span> <strong>Dodaj ogłoszenie</strong></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <strong>{{ app.user.username | default('Niezalogowany') }}</strong>
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="navbar-login">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <p class="text-center">
+                                                <span class="glyphicon glyphicon-user icon-size"></span>
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <p class="text-left"><strong>{{ app.user.firstname | default('Niezalogowany') }} {{ app.user.lastname | default('') }}</strong></p>
+                                            <p class="text-left small">{{ app.user.email | default('') }}</p>
+                                            {% if  app.user.username  is defined  %}
+                                                <p class="text-left">
+                                                    <a href="#" class="btn btn-primary btn-block btn-sm">Konto użytkownika</a>
+                                                </p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider navbar-login-session-bg"></li>
+                            <li class="navbar-login-session-bg">
+                                <div class="navbar-login navbar-login-session">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            {% if  app.user.username  is defined %}
+                                                <p>
+                                                    <a href="{{ path('logout') }}" class="btn btn-danger btn-block">Wyloguj</a>
+                                                </p>
+                                            {% else %}
+                                                <p>
+                                                    <a href="#" class="btn btn-danger btn-block">Zaloguj się</a>
+                                                </p>
+                                                <p>
+                                                    <a href="#" class="btn btn-danger btn-block">Zarejestruj się</a>
+                                                </p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+        <div class="container main-content">
+            <div class="row">
+                <div class="flash_messages">
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ label }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% block body %}
+
+            {% endblock %}
+            </div>
+        </div>
+    <div id="footer">
+        <div class="container">
+            <div class="footer-block">
+                <p><span class="glyphicon glyphicon-copyright-mark"></span> Copyrigth by Sytemy Ogłoszeń. <span class="glyphicon glyphicon-registration-mark"></span> All Rights Reserved 2017</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </body>
+</html>

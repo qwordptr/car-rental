@@ -1,0 +1,44 @@
+AppBundle\Entity\Notice:
+    type: entity
+    table: notice
+    repositoryClass: AppBundle\Repository\NoticeRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'notice id'
+            id: true
+            column: id
+            generator:
+                strategy: IDENTITY
+
+    manyToOne:
+        car:
+            targetEntity: Car
+#            inversedBy: notices
+            joinColumn:
+                name: car_id
+                referencedColumnName: id
+
+    fields:
+        createdAt:
+            type: datetime
+            nullable: false
+            length: 15
+            options:
+                fixed: false
+                comment: 'created at date'
+
+        expiredAt:
+            type: datetime
+            nullable: false
+            length: 15
+            options:
+                fixed: false
+                comment: 'created at date'
+
+        isActive:
+            type: boolean
+lifecycleCallbacks: {  }
