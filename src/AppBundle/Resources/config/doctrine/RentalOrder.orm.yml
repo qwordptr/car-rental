@@ -1,0 +1,48 @@
+AppBundle\Entity\RentalOrder:
+    type: entity
+    table: rentalOrder
+    repositoryClass: AppBundle\Repository\RentalOrder
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'notice id'
+            id: true
+            column: id
+            generator:
+                strategy: IDENTITY
+
+    manyToOne:
+        notice:
+            targetEntity: Notice
+            joinColumn:
+                name: notice_id
+                referencedColumnName: id
+
+        user:
+            targetEntity: User
+            joinColumn:
+                name: user_id
+                referencedColumnName: idUser
+
+    fields:
+        rentFrom:
+            type: datetime
+            nullable: false
+            length: 15
+            options:
+                fixed: false
+                comment: 'Rent from date'
+
+        rentTo:
+            type: datetime
+            nullable: false
+            length: 15
+            options:
+                fixed: false
+                comment: 'Rent to date'
+
+
+lifecycleCallbacks: {  }

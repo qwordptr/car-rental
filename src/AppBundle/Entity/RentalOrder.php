@@ -14,6 +14,9 @@ class RentalOrder
     private $id;
     private $notice;
     private $user;
+    private $issuedAt;
+    private $rentFrom;
+    private $rentTo;
 
     /**
      * @return mixed
@@ -63,4 +66,168 @@ class RentalOrder
         $this->user = $user;
     }
 
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $expiredAt;
+
+    /**
+     * @var boolean
+     */
+    private $isActive;
+
+    /**
+     * @var \AppBundle\Entity\Car
+     */
+    private $car;
+
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return RentalOrder
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set expiredAt
+     *
+     * @param \DateTime $expiredAt
+     *
+     * @return RentalOrder
+     */
+    public function setExpiredAt($expiredAt)
+    {
+        $this->expiredAt = $expiredAt;
+
+        return $this;
+    }
+
+    /**
+     * Get expiredAt
+     *
+     * @return \DateTime
+     */
+    public function getExpiredAt()
+    {
+        return $this->expiredAt;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     *
+     * @return RentalOrder
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Set car
+     *
+     * @param \AppBundle\Entity\Car $car
+     *
+     * @return RentalOrder
+     */
+    public function setCar(\AppBundle\Entity\Car $car = null)
+    {
+        $this->car = $car;
+
+        return $this;
+    }
+
+    /**
+     * Get car
+     *
+     * @return \AppBundle\Entity\Car
+     */
+    public function getCar()
+    {
+        return $this->car;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRentTo()
+    {
+        return $this->rentTo;
+    }
+
+    /**
+     * @param mixed $rentTo
+     */
+    public function setRentTo($rentTo)
+    {
+        $this->rentTo = $rentTo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRentFrom()
+    {
+        return $this->rentFrom;
+    }
+
+    /**
+     * @param mixed $rentFrom
+     */
+    public function setRentFrom($rentFrom)
+    {
+        $this->rentFrom = $rentFrom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIssuedAt()
+    {
+        return $this->issuedAt;
+    }
+
+    /**
+     * @param mixed $issuedAt
+     */
+    public function setIssuedAt($issuedAt)
+    {
+        $this->issuedAt = $issuedAt;
+    }
 }
