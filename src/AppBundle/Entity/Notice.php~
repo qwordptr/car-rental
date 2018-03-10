@@ -15,6 +15,7 @@ class Notice
     private $car;
     private $createdAt;
     private $expiredAt;
+    private $price;
     private $isActive;
 
     /**
@@ -95,5 +96,21 @@ class Notice
     public function setIsActive($isActive)
     {
         $this->isActive = $isActive;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param mixed $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
     }
 }

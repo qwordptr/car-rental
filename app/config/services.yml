@@ -33,13 +33,50 @@ services:
         arguments:
              $userService: '@AppBundle\Service\UserService'
 
+    AppBundle\Controller\NoticeController:
+        arguments:
+             $noticeService: '@AppBundle\Service\NoticeService'
+
+    AppBundle\Controller\OrderController:
+        arguments:
+             $orderService: '@AppBundle\Service\OrderService'
+             $noticeService: '@AppBundle\Service\NoticeService'
+
+    AppBundle\Controller\CarController:
+        arguments:
+             $carService: '@AppBundle\Service\CarService'
+
     #services
     AppBundle\Service\UserService:
         arguments:
             $userRepository: '@AppBundle\Repository\UserRepository'
             $encrypter: '@AppBundle\Service\Encrypter'
 
+    AppBundle\Service\NoticeService:
+            arguments:
+                $noticeRepository: '@AppBundle\Repository\NoticeRepository'
+
+    AppBundle\Service\OrderService:
+            arguments:
+                $orderRepository: '@AppBundle\Repository\OrderRepository'
+
+    AppBundle\Service\CarService:
+            arguments:
+                $carRepository: '@AppBundle\Repository\CarRepository'
+
     #repositories
     AppBundle\Repository\UserRepository:
             factory: 'doctrine.orm.entity_manager:getRepository'
             arguments: ['AppBundle\Entity\User']
+
+    AppBundle\Repository\NoticeRepository:
+            factory: 'doctrine.orm.entity_manager:getRepository'
+            arguments: ['AppBundle\Entity\Notice']
+
+    AppBundle\Repository\OrderRepository:
+            factory: 'doctrine.orm.entity_manager:getRepository'
+            arguments: ['AppBundle\Entity\Order']
+
+    AppBundle\Repository\CarRepository:
+            factory: 'doctrine.orm.entity_manager:getRepository'
+            arguments: ['AppBundle\Entity\Car']

@@ -37,15 +37,11 @@ class UserService implements IUserService
 
         $salt = $encrypter->getSalt();
         $user->setSalt($salt);
+        $user->setRoles(['ROLE_USER']);
         $password = $encrypter->getHash($user->getPassword(), $user->getSalt());
 
         $user->setPassword($password);
 
         $repository->addUser($user);
-    }
-
-    public function getAllUsers() : array
-    {
-        return $this->userRepository->findAll();
     }
 }

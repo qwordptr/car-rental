@@ -1,6 +1,10 @@
 <?php
 
 namespace AppBundle\Repository;
+use AppBundle\Entity\User;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping;
+use Doctrine\ORM\OptimisticLockException;
 
 /**
  * UserRepository
@@ -10,4 +14,21 @@ namespace AppBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    private $em;
+
+    public function __construct(EntityManager $em, Mapping\ClassMetadata $class)
+    {
+        $this->em = $em;
+        parent::__construct($em, $class);
+    }
+
+    public function addUser(User $user)
+    {
+        $this->em->persist($user);
+        try {
+            $this->em->flush();
+        } catch (OptimisticLockException $e) {
+        }
+    }
+
 }

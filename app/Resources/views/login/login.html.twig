@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block title %}Zaloguj się{% endblock %}
+{% block body %}
+    <div class="container">
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        <div class="row main">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <h1 class="title">Logowanie</h1>
+                    <hr />
+                </div>
+            </div>
+            <div class="main-form main-center login-form">
+                <div class="form-group">
+                    {{ form_label(form.username, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder' : 'Podaj nazwę użytkownika'} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.password, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.password, { 'attr': {'class': 'form-control', 'placeholder' : 'Podaj hasło'} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {% if error %}
+                        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group ">
+                    {{ form_widget(form.login, { 'attr': {'class': 'btn btn-primary btn-lg btn-block login-button'} }) }}
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

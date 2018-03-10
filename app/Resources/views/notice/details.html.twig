@@ -1,0 +1,232 @@
+{% extends 'base.html.twig' %}
+{% block title %}Szczegóły ogłoszenia{% endblock %}
+{% block body %}
+    <div class="row details">
+        <div class="col-lg-4">
+            <img src="{{ asset('images/audi.jpg') }}" style="max-width: 300px;"/>
+        </div>
+
+        <div class="col-lg-8 options">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3>Informacje podstawowe</h3>
+                </div>
+
+                <div class="col-lg-4">
+                    {% if  app.user.username  is defined  %}
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModal">
+                            Wypełnij formularz wynajmu
+                        </button>
+                    {% else %}
+                        <a class="btn btn-primary" href="{{ url('register') }}">
+                            Zaloguj się, aby dokonać wynajmu
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td><span class="option-description">Marka:</span> </td>
+                    <td><span class="option-value">{{ notice.car.brand }}</span> </td>
+                </tr>
+
+                <tr>
+                    <td><span class="option-description">Model:</span> </td>
+                    <td><span class="option-value">{{ notice.car.model }}</span> </td>
+                </tr>
+
+
+
+                <tr>
+                    <td><span class="option-description">Silnik:</span> </td>
+                    <td><span class="option-value">{{ notice.car.engine }} {{ notice.car.fuel }}</span> </td>
+                </tr>
+
+                <tr>
+                    <td><span class="option-description">Przebieg:</span> </td>
+                    <td><span class="option-value">{{ notice.car.mileage }} km</span> </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="additional-information">
+            <a data-toggle="collapse" href="#additionalInformation" role="button" aria-expanded="false" aria-controls="additionalInformation"><h3>Informacje dodatkowe</h3></a>
+
+            <div class="collapse" id="additionalInformation">
+                <div class="card card-body options">
+                    <table class="table">
+                        <tbody>
+
+                        <tr>
+                            <td><span class="option-description">Wersja:</span> </td>
+                            <td><span class="option-value">{{ notice.car.version }}</span> </td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="option-description">Rok produkcji:</span> </td>
+                            <td><span class="option-value">{{ notice.car.productionYear }}</span> </td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="option-description">Ilość siedzeń:</span> </td>
+                            <td><span class="option-value">{{ notice.car.seats }}</span> </td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="option-description">Skrzynia biegów:</span> </td>
+                            <td><span class="option-value">{{ notice.car.model }}</span> </td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="option-description">Klimatyzacja:</span> </td>
+                            <td><span class="option-value">{{ notice.car.version }}</span> </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {#Model#}
+    <!-- Modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="orderModalLabel">Szczegóły wynajmu</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="order-dates">
+                        <h4>Data wypożyczenia</h4>
+                        <div class="input-daterange input-group" id="datepicker">
+                            <input id="startdate" type="text" class="input-sm form-control" name="start" />
+                            <span class="input-group-addon">do</span>
+                            <input id="enddate" type="text" class="input-sm form-control" name="end" />
+                        </div>
+                    </div>
+
+                    <div class="order-days">
+                        <h4>Ilość dni: <span id="days">0</span></h4>
+                    </div>
+
+                    <div class="order-cost">
+                        <h2>Koszt: <span id="cost">0.00zł</span></h2>
+                    </div>
+
+                    <div class="order-info">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
+                    <button id="confirm" type="button" class="btn btn-primary disabled">Rezerwacja</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    $(document).ready(function()
+    {
+        $('#datepicker').datepicker({
+            startDate: new Date(),
+        });
+
+        var startDate = new Date();
+        var endDate = new Date();
+        var days = 0
+        var cost = 0
+
+        $("#startdate").datepicker()
+            .on("changeDate", function (e) {
+                startDate = new Date(e.date)
+                var diff = date_diff_indays(startDate, endDate)
+                days = diff
+                updateDays(diff)
+                calculateCost(diff)
+            })
+
+        $("#enddate").datepicker()
+            .on("changeDate", function (e) {
+                endDate = new Date(e.date)
+                var diff = date_diff_indays(startDate, endDate)
+                days = diff;
+                if (diff === 0) {
+                    showInfo("Musisz wypożyczyć pojazd na co najmniej 1 dzień.");
+                    $("#confirm").addClass("disabled")
+                }else {
+                    clearInfo()
+                    $("#confirm").removeClass("disabled")
+                }
+
+                updateDays(diff)
+                calculateCost(diff)
+
+            })
+
+        $("#confirm").on("click", function(e){
+            e.preventDefault(); // prevent de default action, which is to submit
+            //$(this).prev().click();
+
+            if ($("#confirm").hasClass("disabled")) {
+                return;
+            }
+
+            var url = "{{ url('create_order') }}"
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {notice: {{ notice.id}}, days: days, startDate:startDate, endDate:endDate },
+                success: function (data) {
+                    console.log(data)
+                },
+                error: function (data) {
+                    console.log(data)
+                },
+                dataType: "json"
+            });
+
+        });
+    });
+
+     var date_diff_indays = function(date1, date2) {
+        dt1 = new Date(date1);
+        dt2 = new Date(date2);
+        return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate()) ) /(1000 * 60 * 60 * 24));
+     }
+     
+     var updateDays = function (days) {
+         $("#days").text(days)
+     }
+     
+     var showInfo = function (message) {
+        $(".order-info").html(
+            '<div class="alert alert-info" role="alert">' +message+ '</div>')
+     }
+
+     var clearInfo = function () {
+         $(".order-info").empty()
+     }
+
+     var calculateCost = function (days) {
+         var price = ({{ notice.price }}) * days;
+
+         if (parseInt(price) || price === 0) {
+             price = parseFloat(price).toFixed(2);
+         }
+         else {
+             price = Math.round(price * 100) / 100
+         }
+
+         $("#cost").text(price + "zł")
+     }
+</script>
+
+{% endblock %}

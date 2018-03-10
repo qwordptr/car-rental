@@ -18,5 +18,48 @@ AppBundle\Entity\Car:
 #            targetEntity: Notice
 #            mappedBy: car
     fields:
+        model:
+            type: string
+            nullable: false
+            length: 63
+            options:
+                fixed: false
+        brand:
+            type: string
+            nullable: false
+            length: 63
+            options:
+                fixed: false
 
+        version:
+            type: string
+            nullable: false
+            length: 63
+            options:
+                fixed: false
+
+        engine:
+            type: string
+            nullable: false
+            length: 63
+            options:
+                fixed: false
+        fuel:
+            type: string
+            nullable: false
+            length: 63
+            options:
+                fixed: false
+
+        mileage:
+            type: integer
+            nullable: false
+            options:
+                fixed: false
+
+        productionYear:
+            type: smallint
+            nullable: false
+            options:
+                fixed: false
 lifecycleCallbacks: {  }

@@ -18,6 +18,7 @@ class Car
     private $engine;
     private $fuel;
     private $mileage;
+    private $seats;
     private $productionYear;
 
     /**
@@ -146,5 +147,21 @@ class Car
     public function setProductionYear($productionYear)
     {
         $this->productionYear = $productionYear;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSeats()
+    {
+        return $this->seats;
+    }
+
+    /**
+     * @param mixed $seats
+     */
+    public function setSeats($seats)
+    {
+        $this->seats = $seats;
     }
 }

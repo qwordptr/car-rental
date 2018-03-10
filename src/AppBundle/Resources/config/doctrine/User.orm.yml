@@ -77,4 +77,7 @@ AppBundle\Entity\User:
                 comment: 'salt'
         isActive:
             type: boolean
+
+        roles:
+            type: json
 lifecycleCallbacks: {  }

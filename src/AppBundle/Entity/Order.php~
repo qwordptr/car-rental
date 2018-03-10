@@ -1,0 +1,233 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: patryk
+ * Date: 06.03.18
+ * Time: 22:03
+ */
+
+namespace AppBundle\Entity;
+
+
+class Order
+{
+    private $id;
+    private $notice;
+    private $user;
+    private $issuedAt;
+    private $rentFrom;
+    private $rentTo;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNotice()
+    {
+        return $this->notice;
+    }
+
+    /**
+     * @param mixed $notice
+     */
+    public function setNotice($notice)
+    {
+        $this->notice = $notice;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $expiredAt;
+
+    /**
+     * @var boolean
+     */
+    private $isActive;
+
+    /**
+     * @var \AppBundle\Entity\Car
+     */
+    private $car;
+
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Order
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set expiredAt
+     *
+     * @param \DateTime $expiredAt
+     *
+     * @return Order
+     */
+    public function setExpiredAt($expiredAt)
+    {
+        $this->expiredAt = $expiredAt;
+
+        return $this;
+    }
+
+    /**
+     * Get expiredAt
+     *
+     * @return \DateTime
+     */
+    public function getExpiredAt()
+    {
+        return $this->expiredAt;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     *
+     * @return Order
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Set car
+     *
+     * @param \AppBundle\Entity\Car $car
+     *
+     * @return Order
+     */
+    public function setCar(\AppBundle\Entity\Car $car = null)
+    {
+        $this->car = $car;
+
+        return $this;
+    }
+
+    /**
+     * Get car
+     *
+     * @return \AppBundle\Entity\Car
+     */
+    public function getCar()
+    {
+        return $this->car;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRentTo()
+    {
+        return $this->rentTo;
+    }
+
+    /**
+     * @param mixed $rentTo
+     */
+    public function setRentTo($rentTo)
+    {
+        $this->rentTo = $rentTo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRentFrom()
+    {
+        return $this->rentFrom;
+    }
+
+    /**
+     * @param mixed $rentFrom
+     */
+    public function setRentFrom($rentFrom)
+    {
+        $this->rentFrom = $rentFrom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIssuedAt()
+    {
+        return $this->issuedAt;
+    }
+
+    /**
+     * @param mixed $issuedAt
+     */
+    public function setIssuedAt($issuedAt)
+    {
+        $this->issuedAt = $issuedAt;
+    }
+}

@@ -7,12 +7,12 @@
  */
 
 namespace AppBundle\Controller;
-
 use AppBundle\Form\RegisterType;
 use AppBundle\Service\Interfaces\IUserService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+
 
 class RegisterController extends Controller
 {
@@ -43,7 +43,7 @@ class RegisterController extends Controller
                 'Zostałeś zarejestrowany. Możesz zalogować się do konta.'
             );
 
-            return $this->redirectToRoute('board');
+            return $this->redirectToRoute('browse_notices');
         }
 
         return $this->render('register/register.html.twig', ['form' => $form->createView()]);

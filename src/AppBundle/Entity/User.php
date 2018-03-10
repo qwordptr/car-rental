@@ -23,7 +23,7 @@ class User implements UserInterface, \Serializable
     private $birthday;
     private $password;
     private $salt;
-    private $role;
+    private $roles = [];
     private $isActive;
     /**
      * @return mixed
@@ -176,20 +176,13 @@ class User implements UserInterface, \Serializable
         $this->salt = $salt;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
 
     /**
-     * @param mixed $role
+     * @param mixed $roles
      */
-    public function setRole($role)
+    public function setRoles(array $roles)
     {
-        $this->role = $role;
+        $this->roles = $roles;
     }
 
     /**
@@ -226,7 +219,13 @@ class User implements UserInterface, \Serializable
      */
     public function getRoles()
     {
-            return array('ROLE_USER');
+        $roles = $this->roles;
+
+        if (!in_array("ROLE_USER", $roles)) {
+            $roles[] = "ROLE_USER";
+        }
+
+        return $roles;
     }
 
     /**
@@ -252,7 +251,7 @@ class User implements UserInterface, \Serializable
             $this->id,
             $this->username,
             $this->password,
-            $this->salt
+            $this->salt,
         ));
     }
 
@@ -271,7 +270,7 @@ class User implements UserInterface, \Serializable
             $this->id,
             $this->username,
             $this->password,
-            $this->salt
+            $this->salt,
             ) = unserialize($serialized);
     }
 }

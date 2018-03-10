@@ -17,5 +17,4 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 interface IUserService
 {
     public function createUser(User $user);
-    public function getAllUsers();
 }

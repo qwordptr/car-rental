@@ -23,6 +23,12 @@ AppBundle\Entity\Notice:
                 referencedColumnName: id
 
     fields:
+        price:
+            type: float
+            nullable: false
+            options:
+                fixed: false
+
         createdAt:
             type: datetime
             nullable: false

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block title %}Lista ogłoszeń{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row board-main">
+            <div class="col-lg-12 notice-container">
+                {% for notice in notices %}
+                    <div class="col-lg-6">
+                        <div class="notice-prev" style="margin-bottom: 80px;">
+                            <div class="notice-prev-contanet">
+                                <div class="row" style="margin: 0;">
+                                    <div class="col-lg-9 notice-title">
+                                        <h2>{{ notice.car.brand }} {{ notice.car.model }}</h2>
+                                    </div>
+
+                                    <div class="col-lg-3 pricing">
+                                        <h2>{{ notice.price }} zł</h2>
+                                    </div>
+                                </div>
+                                <img class="imgur" src="{{ asset('images/audi.jpg') }}" style="width: 100%; height: 100%; border-radius: 5px;"/>
+                            </div>
+
+                            <div class="middle">
+                                <div class="middle-text"><h3>Kliknij, aby zobaczyć szczegóły oferty</h3></div>
+                                <div class="text">
+                                    <a href="{{ url('notice_details',{'id': notice.id}) }}">
+                                        <img src="{{ asset('images/loupe.png') }}" width="150px">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $
+    </script>
+
+    {# display navigation #}
+    {#<div class="navigation">#}
+        {#{{ knp_pagination_render(notices) }}#}
+    {#</div>#}
+
+{% endblock %}

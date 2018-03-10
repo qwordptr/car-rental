@@ -25,9 +25,6 @@ class User implements UserInterface, \Serializable
     private $salt;
     private $role;
     private $isActive;
-
-    private $notices;
-
     /**
      * @return mixed
      */

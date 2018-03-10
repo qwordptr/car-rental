@@ -1,7 +1,7 @@
-AppBundle\Entity\RentalOrder:
+AppBundle\Entity\Order:
     type: entity
     table: rentalOrder
-    repositoryClass: AppBundle\Repository\RentalOrder
+    repositoryClass: AppBundle\Repository\OrderRepository
     id:
         id:
             type: integer
@@ -28,6 +28,14 @@ AppBundle\Entity\RentalOrder:
                 referencedColumnName: idUser
 
     fields:
+        createdAt:
+            type: datetime
+            nullable: false
+            lenght: 15
+            options:
+                fixed: false
+                comment: "Created at date"
+
         rentFrom:
             type: datetime
             nullable: false

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %}Panel Administracyjny{% endblock %}
+{% block body %}
+    <div class="container">
+        <h2>Wybierz aplikację, do administrowania</h2>
+        <div class="apps">
+            <div class="col-lg-3 app">
+                <img src="{{ asset("images/notice.png") }}" height="150" style="">
+                <div><h3>Ogłoszenia</h3></div>
+            </div>
+
+            <div class="col-lg-3 app">
+                <img src="{{ asset("images/order.png") }}" height="150" style="">
+                <div><h3>Zamówienia</h3></div>
+            </div>
+
+            <div class="col-lg-3 app">
+                <a href="{{ url("browse_car") }}"> <img src="{{ asset("images/car.png") }}" height="150"></a>
+                <div><h3>Pojazdy</h3></div>
+            </div>
+
+            <div class="col-lg-3 app">
+                <img src="{{ asset("images/users.png") }}" height="150">
+                <div><h3>Użytkownicy</h3></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

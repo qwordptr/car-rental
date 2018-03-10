@@ -1,6 +1,10 @@
 <?php
 
 namespace AppBundle\Repository;
+use AppBundle\Entity\Notice;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping;
+use Doctrine\ORM\OptimisticLockException;
 
 /**
  * NoticeRepository
@@ -10,4 +14,32 @@ namespace AppBundle\Repository;
  */
 class NoticeRepository extends \Doctrine\ORM\EntityRepository
 {
+    private $em;
+
+    public function __construct(EntityManager $em, Mapping\ClassMetadata $class)
+    {
+        $this->em = $em;
+        parent::__construct($em, $class);
+    }
+
+    public function browse()
+    {
+        $em = $this->em;
+
+        $qb = $this->createQueryBuilder('n')
+            ->andWhere('n.isActive = :state')
+            ->setParameter("state", true)
+            ->getQuery();
+
+        return $qb->execute();
+
+    }
+
+    public function update(Notice $notice)
+    {
+        try {
+            $this->em->flush();
+        } catch (OptimisticLockException $e) {
+        }
+    }
 }
