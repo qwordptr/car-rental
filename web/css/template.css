@@ -78,4 +78,21 @@ body {
     margin-top: 70px;
 }
 
+.admin-panel-button {
+    color: red;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin-right: 100px;
+    margin-bottom: 100px;
+    opacity: 0.4;
+}
+.admin-panel-button img{
+    width: 80px;
+}
+
+.admin-panel-button:hover {
+    opacity: 1.0;
+}
+
 /* SEARCH */

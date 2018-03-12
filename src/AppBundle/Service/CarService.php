@@ -12,6 +12,7 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Car;
 use AppBundle\Repository\CarRepository;
 use AppBundle\Service\Interfaces\ICarService;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CarService implements ICarService
 {
@@ -32,6 +33,23 @@ class CarService implements ICarService
 
     public function create(Car $car)
     {
-        // TODO: Implement create() method.
+        $this->carRepository->add($car);
+    }
+
+    public function getAvailableCars()
+    {
+        return $this->carRepository->getAvailableCars();
+    }
+
+    public function get($id)
+    {
+        $car = $this->carRepository->find($id);
+
+        if ($car == null)
+        {
+            throw new NotFoundHttpException("Nie ma takiego samochodu.");
+        }
+
+        return $car;
     }
 }

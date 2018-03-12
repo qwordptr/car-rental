@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+{% block title %}Panel Administracyjny{% endblock %}
+{% block body %}
+    <div class="add-section">
+        <a href="{{ url('admin_create_notice') }}" class="btn btn-info">Dodaj nowe ogłoszenie</a>
+    </div>
+    <div class="list">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#active">Aktywne</a></li>
+            <li><a data-toggle="tab" href="#not-active">Zakończone</a></li>
+        </ul>
+
+        <div class="tab-content actives">
+            <div id="active" class="tab-pane fade in active">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Samochód</th>
+                            <th scope="col">Data utworzenia</th>
+                            <th scope="col">Data wygaśnięcia</th>
+                            <th scope="col">Cena</th>
+                            <th scope="col">Opcje</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    {% for notice in notices %}
+                    <tr id="active-{{ notice.id }}">
+                    <th scope="row">{{loop.index}}</th>
+                        <td><a href="#car">{{ notice.car }}</a></td>
+                        <td>{{ notice.createdAt |date("m/d/Y") }}</td>
+                        <td>{{ notice.expiredAt |date("m/d/Y") }}</td>
+                        <td>{{ notice.price }}</td>
+                        <td>
+                            <a href="{{ url('notice_details', {'id': notice.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
+                            <a href="{{ url('admin_edit_notice', {'id': notice.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                            <a href="{{ url('admin_deactivate_notice', {'id': notice.id}) }}"><span class="glyphicon glyphicon-remove deactivate-notice"></span></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+            <div id="not-active" class="tab-pane fade">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Samochód</th>
+                        <th scope="col">Data utworzenia</th>
+                        <th scope="col">Data wygaśnięcia</th>
+                        <th scope="col">Cena</th>
+                        <th scope="col">Opcje</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for notice in notices %}
+                        <tr id="{{ notice.id }}">
+                            <th scope="row">{{loop.index}}</th>
+                            <td>{{ notice.car }}</td>
+                            <td>{{ notice.createdAt |date("m/d/Y") }}</td>
+                            <td>{{ notice.expiredAt |date("m/d/Y") }}</td>
+                            <td>{{ notice.price }}</td>
+                            <td>
+                                <a href="#"><span class="glyphicon glyphicon-search"></span></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+{% block javascripts %}
+    <script>
+        $(".deactivate-notice").on('click', function (e) {
+            e.preventDefault()
+            var url = $(this).parent().attr('href')
+
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function(result) {
+                    var response  = JSON.parse(result)
+                    $('#active-'+response.id).remove()
+                    addFlash(response.type, response.message)
+                },
+                error: function (result) {
+                    var response  = JSON.parse(result)
+                    addFlash(response.type, response.message)
+                }
+            });
+        })
+    </script>
+{% endblock %}
+
+{% endblock %}

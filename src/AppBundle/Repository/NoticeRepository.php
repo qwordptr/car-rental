@@ -5,6 +5,7 @@ use AppBundle\Entity\Notice;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping;
 use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 
 /**
  * NoticeRepository
@@ -35,11 +36,22 @@ class NoticeRepository extends \Doctrine\ORM\EntityRepository
 
     }
 
+    public function add(Notice $notice)
+    {
+        $em = $this->em;
+        try {
+            $em->persist($notice);
+            $em->flush();
+        } catch (ORMException $e) {
+        }
+    }
+
     public function update(Notice $notice)
     {
         try {
             $this->em->flush();
         } catch (OptimisticLockException $e) {
+        } catch (ORMException $e) {
         }
     }
 }

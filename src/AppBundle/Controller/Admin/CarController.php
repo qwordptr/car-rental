@@ -6,12 +6,14 @@
  * Time: 21:53
  */
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\Admin;
 
 
+use AppBundle\Form\CarType;
 use AppBundle\Service\Interfaces\ICarService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class CarController extends Controller
 {
@@ -21,6 +23,23 @@ class CarController extends Controller
     {
         $this->carService = $carService;
     }
+
+    /**
+     * @Route("/admin/car/create", name="create_car")
+     */
+    public function createAction(Request $request)
+    {
+        $form = $this->createForm(CarType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->carService->create($form->getData());
+            $this->addFlash('success', 'Nowy samochód został dodany do bazy.');
+        }
+
+        return $this->render('car/create.html.twig', ['form' => $form->createView() ]);
+    }
+
 
     /**
      * @Route("/admin/car", name="browse_car")

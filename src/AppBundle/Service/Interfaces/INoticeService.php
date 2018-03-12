@@ -16,6 +16,7 @@ interface INoticeService
     public function browse();
     public function get($id) : Notice;
     public function create(Notice $notice);
+    public function update(Notice $notice);
     public function deactivate($noticeId);
 
 }

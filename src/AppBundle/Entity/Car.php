@@ -9,6 +9,8 @@
 namespace AppBundle\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class Car
 {
     private $id;
@@ -20,6 +22,82 @@ class Car
     private $mileage;
     private $seats;
     private $productionYear;
+    private $gearshift;
+
+    //Related entity not domain property
+    private $notices;
+
+    public function __construct()
+    {
+        $this->notices = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGearshift()
+    {
+        return $this->gearshift;
+    }
+
+    /**
+     * @param mixed $gearshift
+     */
+    public function setGearshift($gearshift)
+    {
+        $this->gearshift = $gearshift;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVin()
+    {
+        return $this->vin;
+    }
+
+    /**
+     * @param mixed $vin
+     */
+    public function setVin($vin)
+    {
+        $this->vin = $vin;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAirConditioning()
+    {
+        return $this->airConditioning;
+    }
+
+    /**
+     * @param mixed $airConditioning
+     */
+    public function setAirConditioning($airConditioning)
+    {
+        $this->airConditioning = $airConditioning;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegistrationNumber()
+    {
+        return $this->registrationNumber;
+    }
+
+    /**
+     * @param mixed $registrationNumber
+     */
+    public function setRegistrationNumber($registrationNumber)
+    {
+        $this->registrationNumber = $registrationNumber;
+    }
+    private $vin;
+    private $airConditioning;
+    private $registrationNumber;
 
     /**
      * @return mixed
@@ -163,5 +241,26 @@ class Car
     public function setSeats($seats)
     {
         $this->seats = $seats;
+    }
+
+    public function __toString()
+    {
+        return $this->brand . ' ' .$this->model . ' ' . $this->engine;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getNotices()
+    {
+        return $this->notices;
+    }
+
+    /**
+     * @param ArrayCollection $notices
+     */
+    public function setNotices($notices)
+    {
+        $this->notices = $notices;
     }
 }

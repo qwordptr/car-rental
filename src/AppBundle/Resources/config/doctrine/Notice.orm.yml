@@ -17,7 +17,7 @@ AppBundle\Entity\Notice:
     manyToOne:
         car:
             targetEntity: Car
-#            inversedBy: notices
+            inversedBy: notices
             joinColumn:
                 name: car_id
                 referencedColumnName: id

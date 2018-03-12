@@ -13,10 +13,10 @@ AppBundle\Entity\Car:
             column: id
             generator:
                 strategy: IDENTITY
-#    oneToOne:
-#          notice:
-#            targetEntity: Notice
-#            mappedBy: car
+    oneToMany:
+          notices:
+            targetEntity: Notice
+            mappedBy: car
     fields:
         model:
             type: string
@@ -60,6 +60,33 @@ AppBundle\Entity\Car:
         productionYear:
             type: smallint
             nullable: false
+            options:
+                fixed: false
+
+        gearshift:
+            type: string
+            nullable: false
+            length: 63
+            options:
+                fixed: false
+        vin:
+            type: string
+            nullable: false
+            length: 63
+            options:
+                fixed: false
+
+        airConditioning:
+            type: string
+            nullable: false
+            length: 63
+            options:
+                fixed: false
+
+        registrationNumber:
+            type: string
+            nullable: false
+            length: 63
             options:
                 fixed: false
 lifecycleCallbacks: {  }

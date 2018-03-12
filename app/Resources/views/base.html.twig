@@ -8,7 +8,7 @@
 
         <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
         <script src="{{ asset('js/ajax-tabs.js') }}"></script>
-        <script src="{{ asset('js/message.js') }}"></script>
+        <script src="{{ asset('js/global.js') }}"></script>
 
         <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
         <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
@@ -43,7 +43,6 @@
                     <li><a href="{{ url('browse_notices') }}">Strona Główna</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="new_notice"><a href="#"><span class="glyphicon glyphicon-plus"></span> <strong>Dodaj ogłoszenie</strong></a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <span class="glyphicon glyphicon-user"></span>
@@ -82,10 +81,10 @@
                                                 </p>
                                             {% else %}
                                                 <p>
-                                                    <a href="#" class="btn btn-danger btn-block">Zaloguj się</a>
+                                                    <a href="{{ url('login') }}" class="btn btn-danger btn-block">Zaloguj się</a>
                                                 </p>
                                                 <p>
-                                                    <a href="#" class="btn btn-danger btn-block">Zarejestruj się</a>
+                                                    <a href="{{ url('register') }}" class="btn btn-danger btn-block">Zarejestruj się</a>
                                                 </p>
                                             {% endif %}
                                         </div>
@@ -114,6 +113,12 @@
 
             {% endblock %}
             </div>
+
+            {% if is_granted('ROLE_MANAGER') %}
+                <div class="admin-panel-button">
+                    <a href="{{ url('admin_main') }}"><img src="{{ asset("images/settings-admin.png") }}"></a>
+                </div>
+            {% endif %}
         </div>
     <div id="footer">
         <div class="container">

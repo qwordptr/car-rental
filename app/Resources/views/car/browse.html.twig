@@ -2,7 +2,7 @@
 {% block title %}Panel Administracyjny{% endblock %}
 {% block body %}
     <div class="add-section">
-        <button class="btn btn-info">Dodaj nowy pojazd</button>
+        <a href="{{ url('create_car') }}" class="btn btn-info">Dodaj nowy pojazd</a>
     </div>
     <div class="list">
         <table class="table">
@@ -23,8 +23,8 @@
                     <th scope="row">{{loop.index}}</th>
                     <td>{{ car.brand }}</td>
                     <td>{{ car.model }}</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
+                    <td>{{ car.registrationNumber }}</td>
+                    <td>{{ car.vin }}</td>
                     <td>{{ car.productionYear }}</td>
                     <td>@mdo</td>
                 </tr>

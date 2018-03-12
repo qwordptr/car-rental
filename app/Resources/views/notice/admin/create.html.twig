@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+{% block title %}Dodaj ogłoszenie{% endblock %}
+{% block body %}
+    <div class="container">
+        {{ form_start(form)}}
+        <div class="row main">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <h1 class="title">Dodaj ogłoszenie</h1>
+                    <hr />
+                </div>
+            </div>
+            <div class="main-form main-center">
+                <div class="form-group">
+                    {{ form_label(form.price, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.price, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.car, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.car, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.expiredAt, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.expiredAt, { 'attr': {'class': 'form-control datepicker', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function() {
+                        $('#form_attachments').attr('name',$('#form_attachments').attr('name')+"[]");
+                    });
+                </script>
+
+                <div class="form-group">
+                    {#{% if error %}#}
+                    {#<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>#}
+                    {#{% endif %}#}
+                </div>
+
+                <div class="form-group ">
+                    {{ form_widget(form.create, { 'attr': {'class': 'btn btn-primary btn-lg btn-block login-button'} }) }}
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+    {% block javascripts %}
+        <script>
+            var startDate = new Date()
+            startDate.setDate(startDate.getDate()+1)
+
+            jQuery(document).ready(function() {
+                $('.datepicker').datepicker({
+                    startDate: startDate
+                });
+            });
+        </script>
+    {% endblock %}
+{% endblock %}

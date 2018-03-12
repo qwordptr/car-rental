@@ -1,6 +1,11 @@
 <?php
 
 namespace AppBundle\Repository;
+use AppBundle\Entity\Car;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping;
+use Doctrine\ORM\NonUniqueResultException;
 
 /**
  * CarRepository
@@ -10,4 +15,40 @@ namespace AppBundle\Repository;
  */
 class CarRepository extends \Doctrine\ORM\EntityRepository
 {
+    private $em;
+
+    public function __construct(EntityManager $em, Mapping\ClassMetadata $class)
+    {
+        $this->em = $em;
+
+        parent::__construct($em, $class);
+    }
+
+    public function add(Car $car)
+    {
+            $this->em->persist($car);
+            $this->em->flush();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAvailableCars()
+    {
+        try {
+        $q2 = $this->createQueryBuilder('cc')
+            ->leftJoin('cc.notices', 'nn')
+            ->where('nn.isActive = true')
+            ->getQuery()
+            ->getDQL();
+
+        $q1 = $this->createQueryBuilder('c');
+        $q1->leftJoin('c.notices', 'n')
+            ->where($q1->expr()->notIn('c.id', $q2));
+
+        return $q1->getQuery()->getResult();
+
+        }catch (\Exception $exception) {
+        }
+    }
 }

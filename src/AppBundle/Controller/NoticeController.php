@@ -8,8 +8,9 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Service\Interfaces\INoticeService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Form\NoticeType;
+use AppBundle\Service\Interfaces\INoticeService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,23 +46,5 @@ class NoticeController extends Controller
         $notice = $this->noticeService->get($id);
 
         return $this->render('notice/details.html.twig', ['notice' => $notice]);
-    }
-
-    /**
-     * @Route("/role", name="role2")
-     */
-    public function test2Action()
-    {
-        dump($this->getUser());
-
-        return new Response("Witam");
-    }
-
-    /**
-     * @Route("/role-test/", name="role_test")
-     */
-    public function testAction()
-    {
-        return new Response("Witam");
     }
 }

@@ -15,4 +15,6 @@ interface ICarService
 {
     public function browse();
     public function create(Car $car);
+    public function getAvailableCars();
+    public function get($id);
 }

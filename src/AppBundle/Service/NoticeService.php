@@ -49,7 +49,19 @@ class NoticeService implements INoticeService
 
     public function create(Notice $notice)
     {
-        // TODO: Implement create() method.
+        $notice->setCreatedAt(new \DateTime());
+        $notice->setIsActive(true);
+
+        $this->repository->add($notice);
+    }
+
+    public function update(Notice $notice)
+    {
+        if (!$notice->getisActive()) {
+            throw new \InvalidArgumentException("Ogłosznie nie może zostać edytowane");
+        }
+
+        $this->repository->update($notice);
     }
 
     public function deactivate($noticeId)

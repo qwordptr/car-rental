@@ -42,9 +42,14 @@ services:
              $orderService: '@AppBundle\Service\OrderService'
              $noticeService: '@AppBundle\Service\NoticeService'
 
-    AppBundle\Controller\CarController:
+    AppBundle\Controller\Admin\CarController:
         arguments:
              $carService: '@AppBundle\Service\CarService'
+
+    #controllers - admin
+    AppBundle\Controller\Admin\NoticeController:
+        arguments:
+             $noticeService: '@AppBundle\Service\NoticeService'
 
     #services
     AppBundle\Service\UserService:
