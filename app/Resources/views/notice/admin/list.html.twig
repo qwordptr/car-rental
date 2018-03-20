@@ -6,8 +6,8 @@
     </div>
     <div class="list">
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#active">Aktywne</a></li>
-            <li><a data-toggle="tab" href="#not-active">Zakończone</a></li>
+            <li class="active"><a class="notices-reference notice-active" data-toggle="tab" href="#active" data-href="{{ url('admin_browse_active_notice') }}">Aktywne</a></li>
+            <li class="not-active"><a class="notices-reference notice-not-active" data-toggle="tab" href="#not-active" data-href="{{ url('admin_browse_not_active_notice') }}">Zakończone</a></li>
         </ul>
 
         <div class="tab-content actives">
@@ -20,24 +20,11 @@
                             <th scope="col">Data utworzenia</th>
                             <th scope="col">Data wygaśnięcia</th>
                             <th scope="col">Cena</th>
-                            <th scope="col">Opcje</th>
+                            <th scope="col">Opcje </th>
                         </tr>
                     </thead>
-                <tbody>
-                    {% for notice in notices %}
-                    <tr id="active-{{ notice.id }}">
-                    <th scope="row">{{loop.index}}</th>
-                        <td><a href="#car">{{ notice.car }}</a></td>
-                        <td>{{ notice.createdAt |date("m/d/Y") }}</td>
-                        <td>{{ notice.expiredAt |date("m/d/Y") }}</td>
-                        <td>{{ notice.price }}</td>
-                        <td>
-                            <a href="{{ url('notice_details', {'id': notice.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
-                            <a href="{{ url('admin_edit_notice', {'id': notice.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
-                            <a href="{{ url('admin_deactivate_notice', {'id': notice.id}) }}"><span class="glyphicon glyphicon-remove deactivate-notice"></span></a>
-                        </td>
-                    </tr>
-                    {% endfor %}
+                    <tbody class="active-list">
+                        {#Here will be placed whole content of active notices#}
                     </tbody>
                 </table>
 
@@ -49,24 +36,12 @@
                         <th scope="col">#</th>
                         <th scope="col">Samochód</th>
                         <th scope="col">Data utworzenia</th>
-                        <th scope="col">Data wygaśnięcia</th>
-                        <th scope="col">Cena</th>
-                        <th scope="col">Opcje</th>
+                        <th scope="col">Data zakończenia</th>
+                        <th scope="col">Zamówienie</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    {% for notice in notices %}
-                        <tr id="{{ notice.id }}">
-                            <th scope="row">{{loop.index}}</th>
-                            <td>{{ notice.car }}</td>
-                            <td>{{ notice.createdAt |date("m/d/Y") }}</td>
-                            <td>{{ notice.expiredAt |date("m/d/Y") }}</td>
-                            <td>{{ notice.price }}</td>
-                            <td>
-                                <a href="#"><span class="glyphicon glyphicon-search"></span></a>
-                            </td>
-                        </tr>
-                    {% endfor %}
+                    <tbody class="not-active-list">
+                        {#Here will be placed whole content of not active notices#}
                     </tbody>
                 </table>
             </div>
@@ -76,10 +51,33 @@
 
 {% block javascripts %}
     <script>
-        $(".deactivate-notice").on('click', function (e) {
+        //browse notices
+        $( document ).ready(function() {
+            var hash = window.location.hash;
+            var url = '{{ url('admin_browse_not_active_notice') }}'
+
+            if (hash === '#not-active') {
+                loadNotActiveNotices(url)
+            }else {
+                url = '{{ url('admin_browse_active_notice') }}'
+                loadActiveNotices(url)
+            }
+
+            $(".nav-tabs").on('click', '.notices-reference.notice-active', function () {
+                window.location.hash = this.hash;
+                loadActiveNotices($(this).attr('data-href'))
+            })
+
+            $(".nav-tabs").on('click', '.notices-reference.notice-not-active', function () {
+                window.location.hash = this.hash;
+                loadNotActiveNotices($(this).attr('data-href'))
+            })
+
+
+        //remove notice
+        $("#active").on('click', '.remove', function (e) {
             e.preventDefault()
             var url = $(this).parent().attr('href')
-
             $.ajax({
                 url: url,
                 type: 'DELETE',
@@ -93,8 +91,65 @@
                     addFlash(response.type, response.message)
                 }
             });
-        })
+        });
+
+            function loadActiveNotices(uri) {
+            console.log(uri)
+            $.ajax({
+                url: uri,
+                type: 'GET',
+                success: function (notice) {
+                    $('.active-list').empty()
+                    $.each(notice, function (index, value) {
+                        var carRoute = Routing.generate('admin_details_car', { id: value.car.id });
+                        row =
+                            '<tr id="active-'+value.id+'">'+
+                            '<th scope="row">'+(index+1)+'</th>' +
+                            '<td><a href="' + carRoute + ' ">'+value.car.brand + ' ' + value.car.model + ' ' + value.car.engine + '</a></td>' +
+                            '<td>' + value.createdAt+ '</td>' +
+                            '<td>' + value.expiredAt+ '</td>' +
+                            '<td>' + value.price +' zł</td>' +
+                            '<td class="action-urls">' +
+                                '<a class="action-url" href="'+Routing.generate('notice_details', { id: value.id })+'"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>'+
+                                '<a class="action-url" href="'+Routing.generate('admin_edit_notice', { id: value.id })+'"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>'+
+                                '<a class="action-url" href="'+Routing.generate('admin_remove_notice', { id: value.id })+'"><span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span> '+
+                            '</td>' +
+                            '</tr>'
+                        $(".active-list").append(row)
+                    })
+                },
+                error: function (result) {
+                    console.log("Error while getting results.")
+                }
+            })}
+
+        function loadNotActiveNotices(uri) {
+                $.ajax({
+                    url: uri,
+                    type: 'GET',
+                    success: function (notice) {
+                        $('.not-active-list').empty()
+                        $.each(notice, function (index, value) {
+                            var carRoute = Routing.generate('admin_details_car', { id: value.car.id });
+                            row =
+                                '<tr id="active-'+value.id+'">'+
+                                '<th scope="row">'+(index+1)+'</th>' +
+                                '<td><a href="' + carRoute + ' ">'+value.car.brand + ' ' + value.car.model + ' ' + value.car.engine + '</a></td>' +
+                                '<td>' + value.createdAt+ '</td>' +
+                                '<td>' + value.expiredAt+ '</td>' +
+                                '<td><a href="'+ Routing.generate('admin_order_details', { id: '#'}) +'">Szczegóły</a></td>' +
+                                '</tr>'
+                            $(".not-active-list").append(row)
+                        })
+                    },
+                    error: function (result) {
+                        console.log("Error while getting results.")
+                    }
+                })}
+        });
     </script>
+
+
 {% endblock %}
 
 {% endblock %}

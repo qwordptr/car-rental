@@ -25,7 +25,7 @@ class CarController extends Controller
     }
 
     /**
-     * @Route("/admin/car/create", name="create_car")
+     * @Route("/admin/car/create", name="admin_create_car")
      */
     public function createAction(Request $request)
     {
@@ -40,9 +40,16 @@ class CarController extends Controller
         return $this->render('car/create.html.twig', ['form' => $form->createView() ]);
     }
 
+    /**
+     * @Route("/admin/car/{id}", name="admin_details_car")
+     */
+    public function detailsAction()
+    {
+        //TODO: Method must be implemented
+    }
 
     /**
-     * @Route("/admin/car", name="browse_car")
+     * @Route("/admin/car", name="admin_browse_car")
      */
     public function browseAction()
     {

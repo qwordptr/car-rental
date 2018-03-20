@@ -51,6 +51,11 @@ services:
         arguments:
              $noticeService: '@AppBundle\Service\NoticeService'
 
+    AppBundle\Controller\Admin\OrderController:
+        arguments:
+             $orderService: '@AppBundle\Service\OrderService'
+    #end - controllers -admin
+
     #services
     AppBundle\Service\UserService:
         arguments:
@@ -85,3 +90,10 @@ services:
     AppBundle\Repository\CarRepository:
             factory: 'doctrine.orm.entity_manager:getRepository'
             arguments: ['AppBundle\Entity\Car']
+
+    #serializers
+    AppBundle\Subscribers\NoticePostSerializeSubscriber:
+        arguments:
+          $router: '@router'
+        tags:
+          - { name: jms_serializer.event_subscriber, event: serializer.post_serialize}

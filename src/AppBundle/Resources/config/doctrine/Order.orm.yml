@@ -52,5 +52,30 @@ AppBundle\Entity\Order:
                 fixed: false
                 comment: 'Rent to date'
 
+        daysQuantity:
+            type: smallint
+            nullable: false
+            lenght: 5
+            options:
+                fixed: false
+                comment: 'Quanity of order days'
+
+        totalCost:
+            type: float
+            nullable: false
+            lenght: 10
+            options:
+                fixed: false
+                comment: 'Total cost of order'
+
+        status:
+            type: string
+            nullable: false
+            columnDefinition: ENUM('pending', 'approved', 'rejected')
+            options:
+                fixed: false,
+                comment: 'type'
+            columnt: type
+
 
 lifecycleCallbacks: {  }

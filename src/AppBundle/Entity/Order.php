@@ -11,12 +11,67 @@ namespace AppBundle\Entity;
 
 class Order
 {
+    public const PENDING = "pending";
+    public const APPROVED = "approved";
+    public const REJECTED = "rejected";
+
     private $id;
     private $notice;
     private $user;
     private $createdAt;
     private $rentFrom;
     private $rentTo;
+    private $daysQuantity;
+
+    /**
+     * @return mixed
+     */
+    public function getDaysQuantity()
+    {
+        return $this->daysQuantity;
+    }
+
+    /**
+     * @param mixed $daysQuantity
+     */
+    public function setDaysQuantity($daysQuantity): void
+    {
+        $this->daysQuantity = $daysQuantity;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotalCost()
+    {
+        return $this->totalCost;
+    }
+
+    /**
+     * @param mixed $totalCost
+     */
+    public function setTotalCost($totalCost): void
+    {
+        $this->totalCost = $totalCost;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status): void
+    {
+        $this->status = $status;
+    }
+    private $totalCost;
+    private $status;
 
     /**
      * @return mixed

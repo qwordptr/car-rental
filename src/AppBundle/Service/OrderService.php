@@ -9,6 +9,7 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\Order;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Validator\Constraint;
 use AppBundle\Repository\OrderRepository;
 use AppBundle\Service\Interfaces\IOrderService;
@@ -49,7 +50,57 @@ class OrderService implements IOrderService
         $order->setCreatedAt(new \DateTime());
         $order->setRentFrom($startDate);
         $order->setRentTo($endDate);
+        $order->setStatus(Order::PENDING);
+        $order->setDaysQuantity($days);
+        $order->setTotalCost($notice->getPrice() * $days);
 
         $this->orderRepository->save($order);
+    }
+
+    public function get($id)
+    {
+        $order = $this->orderRepository->find($id);
+
+        if ($order == null)
+        {
+            throw new NotFoundHttpException("Ogłoszenie nie zostało znalezione.");
+        }
+
+        return $order;
+    }
+
+    public function approve($id)
+    {
+        $order = $this->orderRepository->find($id);
+
+        if ($order == null)
+        {
+            throw new NotFoundHttpException("Ogłoszenie nie zostało znalezione.");
+        }
+
+        $order->setStatus(Order::APPROVED);
+
+        $this->orderRepository->update($order);
+    }
+
+    public function reject($id)
+    {
+        $order = $this->orderRepository->find($id);
+
+        if ($order == null)
+        {
+            throw new NotFoundHttpException("Ogłoszenie nie zostało znalezione.");
+        }
+
+        $order->setStatus(Order::REJECTED);
+
+        $this->orderRepository->update($order);
+    }
+
+    public function browseAll()
+    {
+        $orders = $this->orderRepository->findAll();
+
+        return $orders;
     }
 }

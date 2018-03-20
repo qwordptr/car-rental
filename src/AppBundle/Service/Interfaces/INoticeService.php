@@ -14,9 +14,11 @@ use AppBundle\Entity\Notice;
 interface INoticeService
 {
     public function browse();
+    public function browseNotActive();
     public function get($id) : Notice;
     public function create(Notice $notice);
     public function update(Notice $notice);
     public function deactivate($noticeId);
+    public function remove($noticeId);
 
 }

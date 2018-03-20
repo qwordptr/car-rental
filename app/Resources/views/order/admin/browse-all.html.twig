@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block title %}Panel Administracyjny{% endblock %}
+{% block body %}
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Zamawiający</th>
+            <th scope="col">Samochód</th>
+            <th scope="col">Data zamówienia</th>
+            <th scope="col">Kwota zamówienia</th>
+            <th scope="col">Status</th>
+            <th scope="col">Opcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{ order.user }}</td>
+                <td><a href="{{ url("admin_details_car", {id : order.notice.car.id}) }}">{{ order.notice.car }}</a></td>
+                <td>{{ order.createdAt | date('Y-m-d')}}</td>
+                <td>{{ order.totalCost }} zł</td>
+                <td>
+                    {% if (order.status == 'pending') %}
+                        <span class="btn btn-info">Oczekuje na akceptację</span>
+                    {% elseif (order.status == 'approved') %}
+                        <span class="btn btn-success">Zatwierdzone</span>
+                    {% else %}
+                        <span class="btn btn-danger">Odrzucone</span>
+                    {% endif %}
+                </td>
+                <td><a href="{{ url('admin_order_details', {id : order.id}) }}">Szczegóły</a> </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

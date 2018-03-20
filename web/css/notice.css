@@ -91,3 +91,7 @@
 .details .option-description {
     font-weight: bold;
 }
+
+.action-url {
+    margin: 10px;
+}

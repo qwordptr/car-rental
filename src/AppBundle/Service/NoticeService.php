@@ -23,14 +23,18 @@ class NoticeService implements INoticeService
         $this->repository = $noticeRepository;
     }
 
+    public function browseNotActive()
+    {
+        $notices = $this->repository->findBy([
+            'isActive' => false
+        ]);
+
+        return $notices;
+    }
+
     public function browse()
     {
         $notices = $this->repository->browse();
-
-        if ($notices == null)
-        {
-            throw new NotFoundHttpException("Cant find any notice");
-        }
 
         return $notices;
     }
@@ -76,6 +80,22 @@ class NoticeService implements INoticeService
         $notice->setIsActive(false);
 
         $this->repository->update($notice);
+    }
 
+    /**
+     * @param $noticeId
+     *
+     * TODO check if notice can be removed, if is not used by order
+     */
+    public function remove($noticeId)
+    {
+        $notice = $this->repository->find($noticeId);
+
+        if ($noticeId == null)
+        {
+            throw new NotFoundHttpException("Nie ma takiego ogłoszenia.");
+        }
+
+        $this->repository->remove($notice);
     }
 }

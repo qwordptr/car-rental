@@ -54,4 +54,16 @@ class NoticeRepository extends \Doctrine\ORM\EntityRepository
         } catch (ORMException $e) {
         }
     }
+
+    public function remove(Notice $notice)
+    {
+        $em = $this->em;
+
+        try {
+            $em->remove($notice);
+            $em->flush();
+        } catch (ORMException $e) {
+        }
+
+    }
 }

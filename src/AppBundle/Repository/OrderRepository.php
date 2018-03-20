@@ -31,4 +31,25 @@ class OrderRepository extends \Doctrine\ORM\EntityRepository
         } catch (OptimisticLockException $e) {
         }
     }
+
+    public function update(Order $order)
+    {
+        try {
+            $this->em->flush();
+        } catch (OptimisticLockException $e) {
+        } catch (ORMException $e) {
+        }
+    }
+
+    public function browseAll()
+    {
+        $em = $this->em;
+
+        $query = $this->createQueryBuilder('o')
+            ->orderBy('date(o.createdAt DESC')
+            ->getQuery()
+            ;
+
+        return $query->execute();
+    }
 }

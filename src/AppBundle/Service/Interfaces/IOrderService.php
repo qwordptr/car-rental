@@ -13,4 +13,8 @@ namespace AppBundle\Service\Interfaces;
 interface IOrderService
 {
     public function create($notice, $user, $startDate, $endDate, $days);
+    public function get($id);
+    public function approve($id);
+    public function reject($id);
+    public function browseAll();
 }

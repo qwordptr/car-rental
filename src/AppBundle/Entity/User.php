@@ -273,4 +273,9 @@ class User implements UserInterface, \Serializable
             $this->salt,
             ) = unserialize($serialized);
     }
+
+    public function __toString()
+    {
+        return $this->first_name . " " . $this->last_name;
+    }
 }

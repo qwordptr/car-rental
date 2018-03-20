@@ -13,8 +13,17 @@ use AppBundle\Service\Interfaces\ICarService;
 use AppBundle\Service\Interfaces\INoticeService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
+
+
+
+
 
 class NoticeController extends Controller
 {
@@ -34,7 +43,35 @@ class NoticeController extends Controller
     {
         $notices = $this->noticeService->browse();
 
-        return $this->render('notice/admin/list.html.twig', ['notices' => $notices]);
+        return $this->render('notice/admin/list.html.twig', ['notices' => null]);
+    }
+
+    /**
+     * @Route("/admin/notice/browse/active", name="admin_browse_active_notice")
+     */
+    public function getActive()
+    {
+        $notices = $this->noticeService->browse();
+        $serializer = $this->get('jms_serializer');
+        $json = $serializer->serialize($notices, 'json');
+        $response = new Response($json);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * @Route("/admin/notice/browse/not-active", name="admin_browse_not_active_notice")
+     */
+    public function getNotActive()
+    {
+        $notices = $this->noticeService->browseNotActive();
+        $serializer = $this->get('jms_serializer');
+        $json = $serializer->serialize($notices, 'json');
+        $response = new Response($json);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
     /**
@@ -83,7 +120,7 @@ class NoticeController extends Controller
     }
 
     /**
-     * @Route("/admin/notice/{id}", name="admin_deactivate_notice",
+     * @Route("/admin/notice/{id}", name="admin_remove_notice",
      *     requirements={"id": "\d+"}, condition="request.isXmlHttpRequest()",
      *     methods={"DELETE","HEAD"})
      * @param Request $request
@@ -97,7 +134,7 @@ class NoticeController extends Controller
         $response['type'] = 'success';
         $response['id'] = $request->get('id');
         try {
-            $service->deactivate($request->get('id'));
+            $service->remove($request->get('id'));
 
             return new Response(json_encode($response));
 
