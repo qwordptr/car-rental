@@ -18,6 +18,8 @@ class Notice
     private $price;
     private $isActive;
 
+    private $order;
+
     /**
      * @return mixed
      */
@@ -112,5 +114,21 @@ class Notice
     public function setPrice($price)
     {
         $this->price = $price;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * @param mixed $order
+     */
+    public function setOrder($order): void
+    {
+        $this->order = $order;
     }
 }

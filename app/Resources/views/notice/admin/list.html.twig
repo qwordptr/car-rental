@@ -128,6 +128,7 @@
                     url: uri,
                     type: 'GET',
                     success: function (notice) {
+                        console.log(notice)
                         $('.not-active-list').empty()
                         $.each(notice, function (index, value) {
                             var carRoute = Routing.generate('admin_details_car', { id: value.car.id });
@@ -137,7 +138,7 @@
                                 '<td><a href="' + carRoute + ' ">'+value.car.brand + ' ' + value.car.model + ' ' + value.car.engine + '</a></td>' +
                                 '<td>' + value.createdAt+ '</td>' +
                                 '<td>' + value.expiredAt+ '</td>' +
-                                '<td><a href="'+ Routing.generate('admin_order_details', { id: '#'}) +'">Szczegóły</a></td>' +
+                                '<td><a href="'+ Routing.generate('admin_order_details', { id: value.order.id}) +'">Szczegóły</a></td>' +
                                 '</tr>'
                             $(".not-active-list").append(row)
                         })

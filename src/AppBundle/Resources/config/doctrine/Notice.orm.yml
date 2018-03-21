@@ -13,6 +13,10 @@ AppBundle\Entity\Notice:
             column: id
             generator:
                 strategy: IDENTITY
+    oneToOne:
+        order:
+            targetEntity: Order
+            mappedBy: notice
 
     manyToOne:
         car:

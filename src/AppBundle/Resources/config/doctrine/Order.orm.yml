@@ -14,9 +14,10 @@ AppBundle\Entity\Order:
             generator:
                 strategy: IDENTITY
 
-    manyToOne:
+    oneToOne:
         notice:
             targetEntity: Notice
+            inversedBy: order
             joinColumn:
                 name: notice_id
                 referencedColumnName: id

@@ -2,32 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="837978d2-0f96-450e-8fbf-bf859e1cd3c9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/wypozyczalnia.iml" afterPath="$PROJECT_DIR$/.idea/wypozyczalnia.iml" />
-      <change beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/admin/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/car/browse.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/car/browse.html.twig" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/notice/admin/list.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/notice/admin/list.html.twig" />
-      <change beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
-      <change beforePath="$PROJECT_DIR$/app/config/services.yml" afterPath="$PROJECT_DIR$/app/config/services.yml" />
-      <change beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/Admin/CarController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/Admin/CarController.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/Admin/NoticeController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/Admin/NoticeController.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/OrderController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/OrderController.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Order.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Order.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/NoticeRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/NoticeRepository.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/OrderRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/OrderRepository.php" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Notice.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Notice.php" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Notice.orm.yml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Notice.orm.yml" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Order.orm.yml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Order.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/Interfaces/INoticeService.php" afterPath="$PROJECT_DIR$/src/AppBundle/Service/Interfaces/INoticeService.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/Interfaces/IOrderService.php" afterPath="$PROJECT_DIR$/src/AppBundle/Service/Interfaces/IOrderService.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/NoticeService.php" afterPath="$PROJECT_DIR$/src/AppBundle/Service/NoticeService.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/OrderService.php" afterPath="$PROJECT_DIR$/src/AppBundle/Service/OrderService.php" />
-      <change beforePath="$PROJECT_DIR$/web/css/notice.css" afterPath="$PROJECT_DIR$/web/css/notice.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,11 +42,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="list.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="list.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/notice/admin/list.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="45" column="24" lean-forward="false" selection-start-line="32" selection-start-column="16" selection-end-line="45" selection-end-column="24" />
+            <state relative-caret-position="238">
+              <caret line="140" column="109" lean-forward="false" selection-start-line="140" selection-start-column="109" selection-end-line="140" selection-end-column="109" />
               <folding />
             </state>
           </provider>
@@ -83,16 +62,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NoticeRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/NoticeRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="OrderRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/OrderRepository.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -103,7 +72,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="browse-all.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="browse-all.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/order/admin/browse-all.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
@@ -113,11 +82,41 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Notice.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Notice.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1296">
+              <caret line="121" column="20" lean-forward="false" selection-start-line="121" selection-start-column="20" selection-end-line="121" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Order.orm.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Order.orm.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Notice.orm.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Notice.orm.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="details.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/order/admin/details.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="89" lean-forward="false" selection-start-line="16" selection-start-column="89" selection-end-line="16" selection-end-column="89" />
+            <state relative-caret-position="0">
+              <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -126,7 +125,7 @@
       <file leaf-file-name="OrderController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Admin/OrderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
+            <state relative-caret-position="205">
               <caret line="36" column="60" lean-forward="false" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="60" />
               <folding />
             </state>
@@ -138,26 +137,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1071">
               <caret line="68" column="26" lean-forward="false" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Order.orm.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Order.orm.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="71" column="12" lean-forward="false" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OrderService.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Service/OrderService.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="101" column="52" lean-forward="false" selection-start-line="101" selection-start-column="52" selection-end-line="101" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -219,7 +198,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/AdminController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/notice/details.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/admin.html.twig" />
         <option value="$PROJECT_DIR$/web/css/admin.css" />
@@ -233,7 +211,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Car.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Service/Interfaces/ICarService.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Car.orm.yml" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Notice.orm.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Service/CarService.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/CarRepository.php" />
         <option value="$PROJECT_DIR$/web/css/template.css" />
@@ -257,11 +234,9 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Service/NoticeService.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/Admin/NoticeController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/OrderController.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/notice/admin/list.html.twig" />
         <option value="$PROJECT_DIR$/app/config/services.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Order.orm.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Order.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Service/Interfaces/IOrderService.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/admin/index.html.twig" />
@@ -270,6 +245,10 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/Admin/OrderController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/order/admin/details.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/order/admin/browse-all.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Notice.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Order.orm.yml" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Notice.orm.yml" />
+        <option value="$PROJECT_DIR$/app/Resources/views/notice/admin/list.html.twig" />
       </list>
     </option>
   </component>
@@ -554,12 +533,12 @@
       <workItem from="1520965794509" duration="8412000" />
       <workItem from="1521002811541" duration="743000" />
       <workItem from="1521058586369" duration="16390000" />
-      <workItem from="1521570953689" duration="8941000" />
+      <workItem from="1521570953689" duration="10688000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108078000" />
+    <option name="totallyTimeSpent" value="109825000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -574,7 +553,7 @@
     <frame x="0" y="27" width="1600" height="873" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891247" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -583,7 +562,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33421752" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33421752" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39920425" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -605,7 +584,7 @@
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891247" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33554375" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33421752" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891247" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
@@ -638,13 +617,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/NoticeType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="48" column="43" lean-forward="false" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Exception/NotFoundHttpException.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="74">
@@ -863,14 +835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Notice.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="103" column="25" lean-forward="false" selection-start-line="103" selection-start-column="20" selection-end-line="103" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -951,26 +915,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Order.orm.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="71" column="12" lean-forward="false" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/OrderRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="426">
           <caret line="45" column="5" lean-forward="false" selection-start-line="45" selection-start-column="5" selection-end-line="50" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/notice/admin/list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="24" lean-forward="false" selection-start-line="32" selection-start-column="16" selection-end-line="45" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -999,26 +947,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Admin/OrderController.php">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/order/admin/browse-all.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="36" column="60" lean-forward="false" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="60" />
+        <state relative-caret-position="221">
+          <caret line="13" column="33" lean-forward="false" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/order/admin/details.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="89" lean-forward="false" selection-start-line="16" selection-start-column="89" selection-end-line="16" selection-end-column="89" />
+        <state relative-caret-position="0">
+          <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/order/admin/browse-all.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Admin/OrderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="36" column="60" lean-forward="false" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Notice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1296">
+          <caret line="121" column="20" lean-forward="false" selection-start-line="121" selection-start-column="20" selection-end-line="121" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Notice.orm.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Order.orm.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="13" column="33" lean-forward="false" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+          <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/notice/admin/list.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="140" column="109" lean-forward="false" selection-start-line="140" selection-start-column="109" selection-end-line="140" selection-end-column="109" />
           <folding />
         </state>
       </provider>
