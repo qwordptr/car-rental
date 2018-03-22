@@ -14,6 +14,7 @@ use AppBundle\Service\Interfaces\ICarService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CarController extends Controller
 {
@@ -37,15 +38,62 @@ class CarController extends Controller
             $this->addFlash('success', 'Nowy samochód został dodany do bazy.');
         }
 
-        return $this->render('car/create.html.twig', ['form' => $form->createView() ]);
+        return $this->render('car/admin/create.html.twig', ['form' => $form->createView() ]);
     }
 
     /**
-     * @Route("/admin/car/{id}", name="admin_details_car")
+     * @Route("/admin/car/{id}", name="admin_details_car", requirements={"id": "\d+"})
      */
-    public function detailsAction()
+    public function detailsAction(Request $request)
     {
-        //TODO: Method must be implemented
+        $car = $this->carService->get($request->get('id'));
+
+        return $this->render('car/admin/details.html.twig', ['car' => $car]);
+    }
+
+    /**
+     * @Route("/admin/car/{id}/edit", name="admin_edit_car", requirements={"id": "\d+"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editAction(Request $request)
+    {
+        $car = $this->carService->get($request->get('id'));
+        $form = $this->createForm(CarType::class, $car);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            //TODO: DOROBIĆ ZAPIS
+        }
+
+        return $this->render('car/admin/edit.html.twig', ['form' => $form->createView()]);
+    }
+
+    /**
+     * @Route("/admin/car/{id}/remove", name="admin_remove_car",
+     *     requirements={"id": "\d+"}, condition="request.isXmlHttpRequest()",
+     *     methods={"DELETE","HEAD"})
+     * )
+     * @param Request $request
+     * @return Response
+     */
+    public function removeAction(Request $request)
+    {
+        $response['message'] = 'Ogłosznie zostało usunięte.';
+        $response['type'] = 'success';
+        $response['id'] = $request->get('id');
+        try {
+            $this->carService->remove($request->get('id'));
+
+            return new Response(json_encode($response));
+
+        }catch (\Exception $exception) {
+            $response['message'] = $exception->getMessage();
+            $response['type'] = 'error';
+
+            return new Response(json_encode($response), Response::HTTP_BAD_REQUEST);
+        }
+
     }
 
     /**
@@ -55,6 +103,6 @@ class CarController extends Controller
     {
         $cars = $this->carService->browse();
 
-        return $this->render("car/browse.html.twig", ['cars' => $cars]);
+        return $this->render("car/admin/browse.html.twig", ['cars' => $cars]);
     }
 }

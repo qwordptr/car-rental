@@ -47,9 +47,25 @@ class CarService implements ICarService
 
         if ($car == null)
         {
-            throw new NotFoundHttpException("Nie ma takiego samochodu.");
+            throw new NotFoundHttpException("Nie znaleziono pojazdu.");
         }
 
         return $car;
+    }
+
+    public function remove($id)
+    {
+        $car = $this->carRepository->find($id);
+
+        if ($car == null)
+        {
+            throw new NotFoundHttpException("Nie znaleziono pojazdu.");
+        }
+
+        foreach ($car->getNotices() as $notice) {
+            $notice->setIsActive(false);
+        }
+
+        $this->carRepository->remove($car);
     }
 }

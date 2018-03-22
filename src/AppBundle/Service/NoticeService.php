@@ -96,6 +96,11 @@ class NoticeService implements INoticeService
             throw new NotFoundHttpException("Nie ma takiego ogłoszenia.");
         }
 
+        if (!$notice->getIsActive())
+        {
+            throw new \InvalidArgumentException("Ogłosznie nie może zostać usunięte.");
+        }
+
         $this->repository->remove($notice);
     }
 }

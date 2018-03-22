@@ -23,6 +23,7 @@ AppBundle\Entity\Notice:
             targetEntity: Car
             inversedBy: notices
             joinColumn:
+                onDelete: "SET NULL"
                 name: car_id
                 referencedColumnName: id
 

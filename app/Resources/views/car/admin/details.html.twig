@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block title %}Szczegóły ogłoszenia{% endblock %}
+{% block body %}
+    <div class="row details">
+        <div class="col-lg-4">
+            <img src="{{ asset('images/audi.jpg') }}" style="max-width: 300px;"/>
+        </div>
+
+        <div class="col-lg-8 options">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3>Informacje podstawowe</h3>
+                </div>
+            </div>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td><span class="option-description">Marka:</span> </td>
+                    <td><span class="option-value">{{ car.brand }}</span> </td>
+                </tr>
+
+                <tr>
+                    <td><span class="option-description">Model:</span> </td>
+                    <td><span class="option-value">{{ car.model }}</span> </td>
+                </tr>
+
+
+
+                <tr>
+                    <td><span class="option-description">Silnik:</span> </td>
+                    <td><span class="option-value">{{ car.engine }} {{ car.fuel }}</span> </td>
+                </tr>
+
+                <tr>
+                    <td><span class="option-description">Przebieg:</span> </td>
+                    <td><span class="option-value">{{ car.mileage }} km</span> </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="additional-information">
+            <a data-toggle="collapse" href="#additionalInformation" role="button" aria-expanded="false" aria-controls="additionalInformation"><h3>Informacje dodatkowe</h3></a>
+
+            <div class="collapse" id="additionalInformation">
+                <div class="card card-body options">
+                    <table class="table">
+                        <tbody>
+
+                        <tr>
+                            <td><span class="option-description">Wersja:</span> </td>
+                            <td><span class="option-value">{{ car.version }}</span> </td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="option-description">Rok produkcji:</span> </td>
+                            <td><span class="option-value">{{ car.productionYear }}</span> </td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="option-description">Ilość siedzeń:</span> </td>
+                            <td><span class="option-value">{{ car.seats }}</span> </td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="option-description">Skrzynia biegów:</span> </td>
+                            <td><span class="option-value">{{ car.model }}</span> </td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="option-description">Klimatyzacja:</span> </td>
+                            <td><span class="option-value">{{ car.version }}</span> </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

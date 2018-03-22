@@ -1,0 +1,147 @@
+{% extends 'base.html.twig' %}
+{% block title %}Edytuj samochód{% endblock %}
+{% block body %}
+    <div class="container">
+        {{ form_start(form)}}
+        <div class="row main">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <h1 class="title">Edytuj samochód</h1>
+                    <hr />
+                </div>
+            </div>
+            <div class="main-form main-center">
+                <div class="form-group">
+                    {{ form_label(form.brand, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.brand, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.model, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.model, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.version, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.version, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    {{ form_label(form.engine, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.engine, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.fuel, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.fuel, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    {{ form_label(form.productionYear, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.productionYear, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.mileage, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.mileage, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    {{ form_label(form.seats, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.seats, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    {{ form_label(form.gearshift, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.gearshift, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    {{ form_label(form.airConditioning, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.airConditioning, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.vin, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.vin, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    {{ form_label(form.registrationNumber, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.registrationNumber, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    {{ form_widget(form.create, {'label' : 'Zapisz', 'attr': {'class': 'btn btn-primary btn-lg btn-block login-button'} }) }}
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -17,4 +17,5 @@ interface ICarService
     public function create(Car $car);
     public function getAvailableCars();
     public function get($id);
+    public function remove($id);
 }

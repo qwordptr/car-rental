@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping;
 use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\ORMException;
 
 /**
  * CarRepository
@@ -50,5 +51,18 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
 
         }catch (\Exception $exception) {
         }
+    }
+
+    public function remove($car)
+    {
+        $em = $this->em;
+
+        try {
+            $em->remove($car);
+            $em->flush();
+        } catch (ORMException $e) {
+
+        }
+
     }
 }

@@ -6,7 +6,7 @@
         <div class="row main">
             <div class="panel-heading">
                 <div class="panel-title text-center">
-                    <h1 class="title">Dodaj ogłoszenie</h1>
+                    <h1 class="title">Dodaj samochód</h1>
                     <hr />
                 </div>
             </div>
@@ -135,44 +135,6 @@
                             {{ form_widget(form.registrationNumber, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
                         </div>
                     </div>
-                </div>
-
-                {#<div class="form-group">#}
-                    {#{{ form_label(form.content, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}#}
-                    {#<div class="cols-sm-10">#}
-                        {#<div class="input-group">#}
-                            {#<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>#}
-                            {#{{ form_widget(form.content, { 'attr': {#}
-                                {#'class': 'form-control',#}
-                                {#'placeholder' : 'Treść ogłoszenia',#}
-                                {#'cols' : '5',#}
-                                {#'rows': '10'#}
-                            {#} }) }}#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-
-
-                {#<div class="form-group">#}
-                    {#{{ form_label(form.attachments, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}#}
-                    {#<div class="cols-sm-10">#}
-                        {#<div class="input-group">#}
-                            {#<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>#}
-                            {#{{ form_widget(form.attachments) }}#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-
-                <script>
-                    $(document).ready(function() {
-                        $('#form_attachments').attr('name',$('#form_attachments').attr('name')+"[]");
-                    });
-                </script>
-
-                <div class="form-group">
-                    {#{% if error %}#}
-                    {#<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>#}
-                    {#{% endif %}#}
                 </div>
 
                 <div class="form-group ">

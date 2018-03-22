@@ -8,9 +8,6 @@
 
 namespace AppBundle\Controller;
 
-
-//TODO: Add status for order
-
 use AppBundle\Service\Interfaces\INoticeService;
 use AppBundle\Service\Interfaces\IOrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
