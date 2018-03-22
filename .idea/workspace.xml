@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="837978d2-0f96-450e-8fbf-bf859e1cd3c9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/car/browse.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/car/admin/browse.html.twig" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/car/create.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/car/admin/create.html.twig" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/notice/admin/list.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/notice/admin/list.html.twig" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/Admin/CarController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/Admin/CarController.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/OrderController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/OrderController.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/CarRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/CarRepository.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Notice.orm.yml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Notice.orm.yml" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/CarService.php" afterPath="$PROJECT_DIR$/src/AppBundle/Service/CarService.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/Interfaces/ICarService.php" afterPath="$PROJECT_DIR$/src/AppBundle/Service/Interfaces/ICarService.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/NoticeService.php" afterPath="$PROJECT_DIR$/src/AppBundle/Service/NoticeService.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Subscribers/NoticePostSerializeSubscriber.php" afterPath="$PROJECT_DIR$/src/AppBundle/Subscribers/NoticePostSerializeSubscriber.php" />
-      <change beforePath="$PROJECT_DIR$/web/css/car.css" afterPath="$PROJECT_DIR$/web/css/car.css" />
-      <change beforePath="$PROJECT_DIR$/web/css/register.css" afterPath="$PROJECT_DIR$/web/css/register.css" />
-      <change beforePath="$PROJECT_DIR$/web/css/template.css" afterPath="$PROJECT_DIR$/web/css/template.css" />
-    </list>
+    <list default="true" id="837978d2-0f96-450e-8fbf-bf859e1cd3c9" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -513,12 +496,12 @@
       <workItem from="1521002811541" duration="743000" />
       <workItem from="1521058586369" duration="16390000" />
       <workItem from="1521570953689" duration="10688000" />
-      <workItem from="1521661530207" duration="10193000" />
+      <workItem from="1521661530207" duration="10338000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120018000" />
+    <option name="totallyTimeSpent" value="120163000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
