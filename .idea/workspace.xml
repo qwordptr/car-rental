@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="837978d2-0f96-450e-8fbf-bf859e1cd3c9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="837978d2-0f96-450e-8fbf-bf859e1cd3c9" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -500,12 +497,12 @@
       <workItem from="1521058586369" duration="16390000" />
       <workItem from="1521570953689" duration="10688000" />
       <workItem from="1521661530207" duration="10932000" />
-      <workItem from="1521820799533" duration="1974000" />
+      <workItem from="1521820799533" duration="2367000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122731000" />
+    <option name="totallyTimeSpent" value="123124000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
