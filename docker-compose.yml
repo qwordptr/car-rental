@@ -1,0 +1,29 @@
+version: '3'
+services:
+  app:
+    image: car-rental
+    ports: 
+      - "8080:80"
+    links:
+      - php 
+    volumes:
+      - ./.code:/var/www/html
+    depends_on:
+      - db
+
+  php:
+    image: php:7.1-fpm
+    volumes:
+      - ./.code:/var/www/html  
+
+  db:
+    image: mysql:5.7
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Zaq12345
+      MYSQL_DATABASE: rental
+  
+volumes:
+  mysql-data:
