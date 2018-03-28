@@ -1,0 +1,26 @@
+AppBundle\Entity\Photo:
+    type: entity
+    table: photo
+    repositoryClass: AppBundle\Repository\PhotoRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'photo id'
+    fields:
+        path:
+            type: string
+            nullable: false
+            length: 63
+            options:
+                fixed: false
+            column: userName
+        extension:
+            type: string
+            nullable: false
+            length: 15
+            options:
+                fixed: false
+lifecycleCallbacks: {  }
