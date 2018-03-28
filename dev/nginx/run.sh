@@ -8,4 +8,7 @@ echo "Done...!"
 
 
 service nginx start
+<<<<<<< HEAD
 
+=======
+>>>>>>> bd6af57180ec001b546a5e0ac5d5c7ef9fb97626
