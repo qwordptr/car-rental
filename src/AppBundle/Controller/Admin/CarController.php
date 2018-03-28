@@ -11,6 +11,8 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Form\CarType;
 use AppBundle\Service\Interfaces\ICarService;
+use AppBundle\Service\Interfaces\IFileUploader;
+use Doctrine\Common\Collections\ArrayCollection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,14 +29,28 @@ class CarController extends Controller
 
     /**
      * @Route("/admin/car/create", name="admin_create_car")
+     * @param Request $request
+     * @param IFileUploader $fileUploader
+     * @return Response
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, IFileUploader $fileUploader)
     {
+        $carService = $this->carService;
         $form = $this->createForm(CarType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->carService->create($form->getData());
+            $car = $form->getData();
+            $photos = $car->getPhotos();
+
+            foreach ($photos as $file)
+            {
+                $photo = $fileUploader->uploadFile($file);
+                $car->addPhoto($photo);
+
+            }
+
+            $carService->create($car);
             $this->addFlash('success', 'Nowy samochód został dodany do bazy.');
         }
 

@@ -11,6 +11,7 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Car;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -34,6 +35,7 @@ class CarType extends AbstractType
              ->add('vin', TextType::class, ['label' => 'Numer VIN'])
              ->add('registrationNumber', TextType::class, ['label' => 'Numer rejestracyjny'])
              ->add('fuel', TextType::class, ['label' => 'Rodzaj paliwa'])
+             ->add('photos', FileType::class, ['label' => 'Zdjęcia', 'multiple' => true, 'data_class' => null])
              ->add('create', SubmitType::class, ['label' => 'Dodaj samochód']);
     }
 

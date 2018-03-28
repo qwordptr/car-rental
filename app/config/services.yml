@@ -74,6 +74,10 @@ services:
             arguments:
                 $carRepository: '@AppBundle\Repository\CarRepository'
 
+    AppBundle\Service\FileUploader:
+            arguments:
+                [%photos_directory%]
+
     #repositories
     AppBundle\Repository\UserRepository:
             factory: 'doctrine.orm.entity_manager:getRepository'

@@ -17,6 +17,11 @@ AppBundle\Entity\Car:
           notices:
             targetEntity: Notice
             mappedBy: car
+
+          photos:
+            targetEntity: Photo
+            mappedBy: car
+            cascade: [persist, remove]
     fields:
         model:
             type: string

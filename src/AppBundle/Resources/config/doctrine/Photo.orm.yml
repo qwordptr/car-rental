@@ -1,7 +1,6 @@
 AppBundle\Entity\Photo:
     type: entity
     table: photo
-    repositoryClass: AppBundle\Repository\PhotoRepository
     id:
         id:
             type: integer
@@ -9,6 +8,19 @@ AppBundle\Entity\Photo:
             options:
                 unsigned: false
                 comment: 'photo id'
+            id: true
+            column: id
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        car:
+            targetEntity: Car
+            inversedBy: photos
+            joinColumn:
+                onDelete: "CASCADE"
+                name: car_id
+                referencedColumnName: id
+
     fields:
         path:
             type: string
@@ -16,7 +28,6 @@ AppBundle\Entity\Photo:
             length: 63
             options:
                 fixed: false
-            column: userName
         extension:
             type: string
             nullable: false

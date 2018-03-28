@@ -23,13 +23,44 @@ class Car
     private $seats;
     private $productionYear;
     private $gearshift;
+    private $vin;
+    private $airConditioning;
+    private $registrationNumber;
 
     //Related entity not domain property
     private $notices;
+    private $photos;
 
     public function __construct()
     {
+        $this->photos = new ArrayCollection();
         $this->notices = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhotos()
+    {
+        return $this->photos;
+    }
+
+    public function addPhoto(Photo $photo)
+    {
+        if (!$this->photos instanceof  ArrayCollection) {
+            $this->photos = new ArrayCollection();
+        }
+
+        $photo->setCar($this);
+        $this->photos->add($photo);
+    }
+
+    /**
+     * @param mixed $photos
+     */
+    public function setPhotos($photos)
+    {
+        $this->photos = $photos;
     }
 
     /**
@@ -95,9 +126,6 @@ class Car
     {
         $this->registrationNumber = $registrationNumber;
     }
-    private $vin;
-    private $airConditioning;
-    private $registrationNumber;
 
     /**
      * @return mixed
