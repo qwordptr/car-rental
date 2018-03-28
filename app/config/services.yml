@@ -76,7 +76,7 @@ services:
 
     AppBundle\Service\FileUploader:
             arguments:
-                [%photos_directory%]
+                ["%photos_directory%"]
 
     #repositories
     AppBundle\Repository\UserRepository:

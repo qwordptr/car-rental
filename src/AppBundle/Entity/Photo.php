@@ -12,9 +12,25 @@ namespace AppBundle\Entity;
 class Photo
 {
     private $id;
-    private $path;
     private $extension;
+    private $filename;
     private $car;
+
+    /**
+     * @return mixed
+     */
+    public function getFilename()
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @param mixed $filename
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+    }
 
     /**
      * @return mixed
@@ -46,22 +62,6 @@ class Photo
     public function setId($id)
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    /**
-     * @param mixed $path
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
     }
 
     /**

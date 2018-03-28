@@ -22,7 +22,7 @@ AppBundle\Entity\Photo:
                 referencedColumnName: id
 
     fields:
-        path:
+        filename:
             type: string
             nullable: false
             length: 63

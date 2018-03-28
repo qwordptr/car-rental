@@ -28,7 +28,7 @@ class FileUploader implements IFileUploader
         $filename = md5(uniqid()).'.'.$file->guessExtension();
         $file->move($this->targetDirectory, $filename);
         $photo = new Photo();
-        $photo->setPath($filename);
+        $photo->setFilename($filename);
         $photo->setExtension($ext);
 
         return $photo;
