@@ -11,7 +11,7 @@
         <script src="{{ asset('js/global.js') }}"></script>
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-
+        <script src="{{ asset('js/dropzone.js') }}"></script>
         <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
         <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
         <!-- Latest compiled and minified CSS -->
@@ -24,7 +24,7 @@
 
         {% block stylesheets %}
             <link rel="stylesheet"  href="{{ asset('css/bootstrap-datepicker.css') }}"/>
-
+            <link rel="stylesheet"  href="{{ asset('css/dropzone.css') }}"/>
             <link rel="stylesheet"  href="{{ asset('css/admin.css') }}"/>
             <link rel="stylesheet"  href="{{ asset('css/car.css') }}"/>
             <link rel="stylesheet"  href="{{ asset('css/notice.css') }}"/>

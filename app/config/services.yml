@@ -45,6 +45,7 @@ services:
     AppBundle\Controller\Admin\CarController:
         arguments:
              $carService: '@AppBundle\Service\CarService'
+             $photoService: '@AppBundle\Service\PhotoService'
 
     #controllers - admin
     AppBundle\Controller\Admin\NoticeController:
@@ -76,7 +77,11 @@ services:
 
     AppBundle\Service\FileUploader:
             arguments:
-                ["%photos_directory%"]
+                ["%temporary_file_directory%"]
+
+    AppBundle\Service\PhotoService:
+            arguments:
+                ["%absolute_photos_directory%", "%public_photos_directory%"]
 
     #repositories
     AppBundle\Repository\UserRepository:

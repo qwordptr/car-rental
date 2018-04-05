@@ -34,4 +34,11 @@ AppBundle\Entity\Photo:
             length: 15
             options:
                 fixed: false
+
+        path:
+            type: string
+            nullable: false
+            length: 127
+            options:
+                fixed: false
 lifecycleCallbacks: {  }

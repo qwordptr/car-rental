@@ -2,6 +2,9 @@
 {% block title %}Dodaj samochód{% endblock %}
 {% block body %}
     <div class="container">
+        <script>
+            Dropzone.autoDiscover = false;
+        </script>
         {{ form_start(form)}}
         <div class="row main">
             <div class="panel-heading">
@@ -10,148 +13,216 @@
                     <hr />
                 </div>
             </div>
-            <div class="main-form main-center">
-                <div class="form-group">
-                    {{ form_label(form.brand, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            {{ form_widget(form.brand, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+            <div class="main-form main-center car-main-form">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        {{ form_label(form.brand, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                {{ form_widget(form.brand, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    {{ form_label(form.model, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            {{ form_widget(form.model, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                    <div class="form-group col-sm-6">
+                        {{ form_label(form.model, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                {{ form_widget(form.model, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    {{ form_label(form.version, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            {{ form_widget(form.version, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                    <div class="form-group col-sm-6">
+                        {{ form_label(form.version, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                {{ form_widget(form.version, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="form-group">
-                    {{ form_label(form.engine, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            {{ form_widget(form.engine, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                    <div class="form-group col-sm-6">
+                        {{ form_label(form.engine, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                {{ form_widget(form.engine, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    {{ form_label(form.fuel, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            {{ form_widget(form.fuel, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                    <div class="form-group col-sm-4">
+                        {{ form_label(form.fuel, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                {{ form_widget(form.fuel, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="form-group">
-                    {{ form_label(form.productionYear, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            {{ form_widget(form.productionYear, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                    <div class="form-group col-sm-4">
+                        {{ form_label(form.productionYear, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                {{ form_widget(form.productionYear, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    {{ form_label(form.mileage, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            {{ form_widget(form.mileage, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                    <div class="form-group col-sm-4">
+                        {{ form_label(form.mileage, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                {{ form_widget(form.mileage, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="form-group">
-                    {{ form_label(form.seats, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            {{ form_widget(form.seats, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                    <div class="form-group col-sm-4">
+                        {{ form_label(form.seats, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                {{ form_widget(form.seats, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="form-group">
-                    {{ form_label(form.gearshift, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            {{ form_widget(form.gearshift, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                    <div class="form-group col-sm-4">
+                        {{ form_label(form.gearshift, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                {{ form_widget(form.gearshift, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="form-group">
-                    {{ form_label(form.airConditioning, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            {{ form_widget(form.airConditioning, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                    <div class="form-group col-sm-4">
+                        {{ form_label(form.airConditioning, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                {{ form_widget(form.airConditioning, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    {{ form_label(form.vin, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            {{ form_widget(form.vin, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                    <div class="form-group col-sm-8">
+                        {{ form_label(form.vin, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                {{ form_widget(form.vin, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="form-group">
-                    {{ form_label(form.registrationNumber, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            {{ form_widget(form.registrationNumber, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                    <div class="form-group col-sm-4">
+                        {{ form_label(form.registrationNumber, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                {{ form_widget(form.registrationNumber, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    {{ form_label(form.photos, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            {{ form_widget(form.photos, { 'attr': {'class': 'form-control'} }) }}
+                    {#<div class="form-group">#}
+                        {#{{ form_label(form.photos, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}#}
+                        {#<div class="cols-sm-10">#}
+                            {#<div class="input-group">#}
+                                {#<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>#}
+                                {#{{ form_widget(form.photos, { 'attr': {'class': 'form-control'} }) }}#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+
+                    <div class="form-group">
+                        {{ form_label(form.photos, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                        <div class="cols-sm-10">
+                                <ul id="car-photos-list" class="hidden"
+                                    data-prototype="{{ form_widget(form.photos.vars.prototype)|e }}"
+                                    data-widget-tags="{{ '<li></li>'|e }}">
+                                    {#{% for emailField in form.photos %}#}
+                                        {#<li>#}
+                                            {#{{ form_errors(emailField) }}#}
+                                            {#{{ form_widget(emailField) }}#}
+                                        {#</li>#}
+                                    {#{% endfor %}#}
+                                </ul>
+                                <div id="dropbox" class="dropzone cols-sm-10">
+                                    <div class="dz-message">
+                                        <span><h2>Przeciągnij pliki, lub kliknij aby dodać.</h2></span>
+                                    </div>
+                                </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group ">
-                    {{ form_widget(form.create, { 'attr': {'class': 'btn btn-primary btn-lg btn-block login-button'} }) }}
+                    <div class="form-group ">
+                        {{ form_widget(form.create, { 'attr': {'class': 'btn btn-primary btn-lg btn-block login-button'} }) }}
+                    </div>
                 </div>
             </div>
         </div>
-        {{ form_end(form) }}
+
+        {{ form_widget(form.photos, {'attr': {'class': 'invisible'}}) }}
+        {{ form_end(form)}}
+
+
+        </div>
     </div>
+
+    {% block javascripts %}
+    <script>
+        $url = "{{ url("admin_car_upload_file") }}"
+        $(document).ready(function () {
+            dropzoneOptions = {
+                url: $url,
+                filesize:  10,
+                maxFilesize: 1,
+                acceptedFiles: "image/*",
+                addRemoveLinks: true,
+                maxFiles: 5,
+                dictRemoveFile: 'USUŃ'
+            };
+
+            var dropbox = new Dropzone("#dropbox", dropzoneOptions);
+            dropbox.on("success", function(file, response) {
+                var list = $('#car-photos-list')
+                var counter = list.data('widget-counter') | list.children().length;
+                if (!counter) { counter = list.children().length; }
+
+                var newWidget = list.data('prototype');
+                newWidget = newWidget.replace(/__name__/g, counter)
+
+                var newElement = $(list.data('widget-tags')).html(newWidget)
+                newElement.appendTo(list);
+
+                $("input[name*='car[photos]["+counter+"][filename]']").val(response.filename)
+                $("input[name*='car[photos]["+counter+"][extension]']").val(response.extension)
+                counter++;
+                list.data('widget-counter', counter);
+            });
+
+            dropbox.on("removedfile", function () {
+                console.log("Remove")
+            })
+
+        })
+    </script>
+    {% endblock %}
 {% endblock %}

@@ -19,7 +19,7 @@
             </thead>
             <tbody id="car-list">
             {% for car in cars %}
-                <tr>
+                <tr id="car-{{ car.id }}">
                     <th scope="row">{{loop.index}}</th>
                     <td>{{ car.brand }}</td>
                     <td>{{ car.model }}</td>
@@ -78,8 +78,9 @@
                         type: 'DELETE',
                         success: function(result) {
                             var response  = JSON.parse(result)
-                            $('#active-'+response.id).remove()
+                            $('#car-'+response.id).remove()
                             addFlash(response.type, response.message)
+                            url = ""
                         },
                         error: function (result) {
                             var response  = JSON.parse(result)

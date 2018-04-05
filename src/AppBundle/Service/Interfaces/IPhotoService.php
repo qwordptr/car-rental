@@ -2,18 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: patryk
- * Date: 28.03.18
- * Time: 21:54
+ * Date: 30.03.18
+ * Time: 14:34
  */
 
 namespace AppBundle\Service\Interfaces;
 
 
+use AppBundle\Entity\Photo;
 use AppBundle\Entity\PreUploadedFile;
+use AppBundle\Form\PhotoType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-interface IFileUploader
+interface IPhotoService
 {
-    public function uploadTemporaryFile(UploadedFile $file);
-    public function persistFile(PreUploadedFile $file, string $directory);
+    public function create(Photo $file);
 }

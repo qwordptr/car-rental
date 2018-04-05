@@ -14,7 +14,9 @@ parameters:
     mailer_host: 127.0.0.1
     mailer_user: ~
     mailer_password: ~
-    photos_directory:
+    temporary_file_directory: 
+    absolute_photos_directory:
+    public_photos_directory:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt

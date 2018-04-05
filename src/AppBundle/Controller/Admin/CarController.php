@@ -9,9 +9,11 @@
 namespace AppBundle\Controller\Admin;
 
 
+use AppBundle\Entity\Photo;
 use AppBundle\Form\CarType;
 use AppBundle\Service\Interfaces\ICarService;
 use AppBundle\Service\Interfaces\IFileUploader;
+use AppBundle\Service\Interfaces\IPhotoService;
 use Doctrine\Common\Collections\ArrayCollection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -21,10 +23,12 @@ use Symfony\Component\HttpFoundation\Response;
 class CarController extends Controller
 {
     private $carService;
+    private $photoService;
 
-    public function __construct(ICarService $carService)
+    public function __construct(ICarService $carService, IPhotoService $photoService)
     {
         $this->carService = $carService;
+        $this->photoService = $photoService;
     }
 
     /**
@@ -33,9 +37,10 @@ class CarController extends Controller
      * @param IFileUploader $fileUploader
      * @return Response
      */
-    public function createAction(Request $request, IFileUploader $fileUploader)
+    public function createAction(Request $request)
     {
         $carService = $this->carService;
+        $photoService = $this->photoService;
         $form = $this->createForm(CarType::class);
         $form->handleRequest($request);
 
@@ -43,11 +48,10 @@ class CarController extends Controller
             $car = $form->getData();
             $photos = $car->getPhotos();
 
-            foreach ($photos as $file)
+            foreach ($photos as $photo)
             {
-                $photo = $fileUploader->uploadFile($file);
+                $photoService->create($photo);
                 $car->addPhoto($photo);
-
             }
 
             $carService->create($car);
@@ -75,11 +79,16 @@ class CarController extends Controller
     public function editAction(Request $request)
     {
         $car = $this->carService->get($request->get('id'));
+        $carService = $this->carService;
+        $photoService = $this->photoService;
         $form = $this->createForm(CarType::class, $car);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            //TODO: DOROBIĆ ZAPIS
+            $updatedCar = $form->getData();
+
+
         }
 
         return $this->render('car/admin/edit.html.twig', ['form' => $form->createView()]);
@@ -120,5 +129,24 @@ class CarController extends Controller
         $cars = $this->carService->browse();
 
         return $this->render("car/admin/browse.html.twig", ['cars' => $cars]);
+    }
+
+    /**
+     * @Route("/admin/car/photos/upload", name="admin_car_upload_file")
+     * @param Request $request
+     * @param IFileUploader $fileUploader
+     * @return Response
+     */
+    public function uploadAction(Request $request, IFileUploader $fileUploader)
+    {
+        $file = $request->files->get('file');
+        $uploadedFile = $fileUploader->uploadTemporaryFile($file);
+
+        $serializer = $this->get('jms_serializer');
+        $json = $serializer->serialize($uploadedFile, 'json');
+        $response = new Response($json);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 }

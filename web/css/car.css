@@ -5,3 +5,7 @@
 #carRemoveModal .modal-body {
     font-size: medium;
 }
+
+.car-main-form {
+    max-width: 900px !important;
+}

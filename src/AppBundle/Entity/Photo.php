@@ -14,6 +14,7 @@ class Photo
     private $id;
     private $extension;
     private $filename;
+    private $path;
     private $car;
 
     /**
@@ -78,5 +79,15 @@ class Photo
     public function setExtension($extension)
     {
         $this->extension = $extension;
+    }
+
+    public function setPath($path)
+    {
+        $this->path = $path;
+    }
+
+    public function getPath()
+    {
+        return $this->path;
     }
 }

@@ -25,73 +25,73 @@ AppBundle\Entity\Car:
     fields:
         model:
             type: string
-            nullable: false
+            nullable: true
             length: 63
             options:
-                fixed: false
+                fixed: true
         brand:
             type: string
-            nullable: false
+            nullable: true
             length: 63
             options:
-                fixed: false
+                fixed: true
 
         version:
             type: string
-            nullable: false
+            nullable: true
             length: 63
             options:
-                fixed: false
+                fixed: true
 
         engine:
             type: string
-            nullable: false
+            nullable: true
             length: 63
             options:
-                fixed: false
+                fixed: true
         fuel:
             type: string
-            nullable: false
+            nullable: true
             length: 63
             options:
-                fixed: false
+                fixed: true
 
         mileage:
             type: integer
-            nullable: false
+            nullable: true
             options:
-                fixed: false
+                fixed: true
 
         productionYear:
             type: smallint
-            nullable: false
+            nullable: true
             options:
-                fixed: false
+                fixed: true
 
         gearshift:
             type: string
-            nullable: false
+            nullable: true
             length: 63
             options:
-                fixed: false
+                fixed: true
         vin:
             type: string
-            nullable: false
+            nullable: true
             length: 63
             options:
-                fixed: false
+                fixed: true
 
         airConditioning:
             type: string
-            nullable: false
+            nullable: true
             length: 63
             options:
-                fixed: false
+                fixed: true
 
         registrationNumber:
             type: string
-            nullable: false
+            nullable: true
             length: 63
             options:
-                fixed: false
+                fixed: true
 lifecycleCallbacks: {  }
