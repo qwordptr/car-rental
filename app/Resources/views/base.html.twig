@@ -117,7 +117,7 @@
             {% endblock %}
             </div>
 
-            {% if is_granted('ROLE_MANAGER') %}
+            {% if is_granted('ROLE_ADMIN') %}
                 <div class="admin-panel-button">
                     <a href="{{ url('admin_main') }}"><img src="{{ asset("images/settings-admin.png") }}"></a>
                 </div>
