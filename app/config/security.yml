@@ -30,7 +30,7 @@ security:
         main:
             anonymous: ~
             provider: pdo_mysql
-#            http_basic: ~
+#           http_basic: ~
             form_login:
                 login_path: login
                 check_path: login
@@ -45,4 +45,6 @@ security:
         ROLE_ADMIN:   ROLE_USER
 
     access_control:
-            - { path: ^/admin/car/$, roles: ROLE_ADMIN}
+            - { path: ^/admin, roles: ROLE_ADMIN}
+            - { path: ^/profile, roles: ROLE_USER}
+            - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
