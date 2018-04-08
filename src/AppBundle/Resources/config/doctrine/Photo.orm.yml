@@ -1,6 +1,7 @@
 AppBundle\Entity\Photo:
     type: entity
     table: photo
+    repositoryClass: AppBundle\Repository\PhotoRepository
     id:
         id:
             type: integer

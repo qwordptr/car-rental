@@ -145,7 +145,7 @@
                     <div class="form-group">
                         {{ form_label(form.photos, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
                         <div class="cols-sm-10">
-                            <ul id="car-photos-list" class="test"
+                            <ul id="car-photos-list" class="hidden"
                                 data-prototype="{{ form_widget(form.photos.vars.prototype)|e }}"
                                 data-widget-tags="{{ '<li></li>'|e }}">
                                 {% for emailField in form.photos %}
@@ -217,8 +217,10 @@
                     list.data('widget-counter', counter);
                 });
 
-                dropbox.on("removedfile", function () {
-                    console.log("Remove")
+                dropbox.on("removedfile", function (file) {
+                    var elem = $('input[value="'+ file.name +'"]').closest("li").remove();
+
+                    console.log(elem)
                 })
 
             })

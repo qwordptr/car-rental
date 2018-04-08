@@ -22,6 +22,7 @@ AppBundle\Entity\Order:
                 name: notice_id
                 referencedColumnName: id
 
+    manyToOne:
         user:
             targetEntity: User
             joinColumn:
@@ -72,11 +73,17 @@ AppBundle\Entity\Order:
         status:
             type: string
             nullable: false
-            columnDefinition: ENUM('pending', 'approved', 'rejected')
+            columnDefinition: ENUM('pending', 'approved', 'rejected', 'in_progress', 'finished_successfully', 'finished_with_comments')
             options:
                 fixed: false,
                 comment: 'type'
             columnt: type
 
-
+        comments:
+            type: text
+            nullable: true
+            lenght: 10
+            options:
+                fixed: false
+                comment: 'Comments'
 lifecycleCallbacks: {  }

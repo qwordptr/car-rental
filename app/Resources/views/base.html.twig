@@ -31,6 +31,7 @@
             <link rel="stylesheet"  href="{{ asset('css/register.css') }}"/>
             <link rel="stylesheet"  href="{{ asset('css/template.css') }}"/>
             <link rel="stylesheet"  href="{{ asset('css/lightbox.css') }}"/>
+            <link rel="stylesheet"  href="{{ asset('css/profile-orders.css') }}"/>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
@@ -65,7 +66,7 @@
                                             <p class="text-left small">{{ app.user.email | default('') }}</p>
                                             {% if  app.user.username  is defined  %}
                                                 <p class="text-left">
-                                                    <a href="#" class="btn btn-primary btn-block btn-sm">Konto użytkownika</a>
+                                                    <a href="{{ url('user_orders') }}" class="btn btn-primary btn-block btn-sm">Konto użytkownika</a>
                                                 </p>
                                             {% endif %}
                                         </div>

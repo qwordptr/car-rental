@@ -1,0 +1,19 @@
+.profile-orders .collapse {
+    padding: 0px;
+}
+.profile-orders .order-top {
+    padding-left: 70px;
+    cursor: pointer ;
+    font-family: Verdana;
+}
+
+.profile-orders .order-details {
+    padding: 10px;
+}
+
+.row-profile-order .order-top:nth-child(even){
+    background-color: #e6f2ff;
+}
+.row-profile-order .order-top:nth-child(odd){
+    background-color: #80bfff;
+}

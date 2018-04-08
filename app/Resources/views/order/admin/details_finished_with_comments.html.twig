@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+    {% block title %}Szczegóły zamówienia - zakończono z uwagami{% endblock %}
+    {% block body %}
+        <div class="row details">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h3>Informacje o zamówieniu</h3>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <a href="#" class="btn btn-warning">Zakończono/Pojazd zwrócony/Uwagi</a>
+                    </div>
+                </div>
+
+                <div>
+                    {{ include('order/admin/order-details.html.twig', { 'order': order }) }}
+                </div>
+
+                <div>
+                    <h3>Uwagi</h3>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

@@ -26,8 +26,14 @@
                     {% if (order.status == 'pending') %}
                         <span class="btn btn-info">Oczekuje na akceptację</span>
                     {% elseif (order.status == 'approved') %}
-                        <span class="btn btn-success">Zatwierdzone</span>
-                    {% else %}
+                        <span class="btn btn-success">Zatwierdzone/pojazd oczekuje</span>
+                    {% elseif (order.status == 'in_progress') %}
+                        <span class="btn btn-success">Pojazd u klienta</span>
+                    {% elseif (order.status == 'finished_successfully') %}
+                        <span class="btn btn-success">Zakończono/zwrócono</span>
+                    {% elseif (order.status == 'finished_with_comments') %}
+                        <span class="btn btn-warning">Zakończono/uwagi</span>
+                    {% elseif (order.status == 'rejected') %}
                         <span class="btn btn-danger">Odrzucone</span>
                     {% endif %}
                 </td>

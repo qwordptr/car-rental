@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+    {% block title %}Moje zamowienia{% endblock %}
+    {% block body %}
+        <div class="title">
+            <h2>Moje zamówienia</h2>
+        </div>
+        <div class="row-profile-order">
+        <ul class="list-group profile-orders">
+        {% for order in orders %}
+            <li class="bg-light list-group-item order-top rounded" data-toggle="collapse" data-target="#collapseOrder_{{ order.id }}">
+                <h3>#{{ loop.index }} - {{ order.notice.car }} - {{ order.createdAt | date('Y-m-d') }}</h3>
+            </li>
+            <li class="collapse list-group-item">
+                <div class="collapse" id="collapseOrder_{{ order.id }}">
+                    <div class="order-details">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <td><span class="option-description">Zamawiający:</span> </td>
+                                <td><span class="option-value">{{ order.user }}</span> </td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="option-description">Samochód:</span> </td>
+                                <td><span class="option-value"><a href="{{ url('admin_details_car', {id : order.notice.car.id}) }}">{{ order.notice.car }}</a> </span> </td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="option-description">Ilośc dni wynajmu:</span> </td>
+                                <td><span class="option-value">{{ order.daysQuantity }} dzień/dni</span> </td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="option-description">Łączny koszt:</span> </td>
+                                <td><span class="option-value">{{ order.totalCost }} zł</span> </td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="option-description">Data utworzenia zamówienia:</span> </td>
+                                <td><span class="option-value">{{ order.createdAt | date('Y-m-d') }}</span></td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="option-description">Data planowanego wypożyczenia:</span> </td>
+                                <td><span class="option-value">{{ order.rentFrom | date('Y-m-d') }}</span></td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="option-description">Data planowanego zwrotu:</span> </td>
+                                <td><span class="option-value"></span>{{ order.rentTo | date('Y-m-d') }} </td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="option-description">Status zamówienia:</span> </td>
+                                <td>
+                                    <span class="option-value">
+                                        {{ getStatus(order.status) }}
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="option-description">Uwagi:</span> </td>
+                                <td><span class="option-value">Brak uwag</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+        </div>
+{% endblock %}

@@ -90,7 +90,8 @@ class NoticeController extends Controller
             $service->create($form->getData());
 
             $this->addFlash('success', 'Nowe ogłoszenie zostało dodane.');
-            $this->redirectToRoute('admin_browse_notice');
+
+            return $this->redirectToRoute('admin_browse_notice');
         }
 
         return $this->render('notice/admin/create.html.twig', ['form' => $form->createView()]);

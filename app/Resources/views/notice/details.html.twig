@@ -3,7 +3,14 @@
 {% block body %}
     <div class="row details">
         <div class="col-lg-4">
-            <img src="{{ asset('images/audi.jpg') }}" style="max-width: 300px;"/>
+            <div>
+                <a href="#{{ notice.car.photos.first.id }}">
+                    <img src="{{ asset(notice.car.photos.first.path) }}" class="thumbnail">
+                </a>
+                <a href="#_" class="lightbox" id="{{ notice.car.photos.first.id }}">
+                    <img src="{{ asset(notice.car.photos.first.path) }}">
+                </a>
+            </div>
         </div>
 
         <div class="col-lg-8 options">
@@ -88,6 +95,23 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+
+        <div class="gallery">
+            <a data-toggle="collapse" href="#gallery" role="button" aria-expanded="false" aria-controls="gallery"><h3>Galeria</h3></a>
+            <div class="collapse" id="gallery">
+                {% for photo in notice.car.photos %}
+                    <div>
+                        <a href="#{{ photo.id }}">
+                            <img src="{{ asset(photo.path) }}" class="thumbnail">
+                        </a>
+                        <a href="#_" class="lightbox" id="{{ photo.id }}">
+                            <img src="{{ asset(photo.path) }}">
+                        </a>
+                    </div>
+
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -186,6 +210,8 @@
                 data: {notice: {{ notice.id}}, days: days, startDate:startDate, endDate:endDate },
                 success: function (data) {
                     console.log(data)
+                    $('#orderModal').modal('hide');
+                    window.location.href = Routing.generate('user_orders');
                 },
                 error: function (data) {
                     console.log(data)

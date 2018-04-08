@@ -12,4 +12,4 @@ parameters:
     secret: 845b60a6e3ede160d672634e8c9977b6d8ccb111
     temporary_file_directory: '%kernel.project_dir%/web/uploads/temp'
     absolute_photos_directory: '%kernel.project_dir%/web/uploads/photos'
-    public_photos_directory: 'uploads/photos'
+    public_photos_directory: uploads/photos

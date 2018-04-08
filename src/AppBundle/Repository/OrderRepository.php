@@ -52,4 +52,15 @@ class OrderRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->execute();
     }
+
+    public function getUserOrders($id)
+    {
+        $qb = $this->createQueryBuilder('o')
+            ->join('o.user', 'u')
+            ->where('u.id = :userId')
+            ->setParameter('userId', $id)
+            ->getQuery();
+
+        return $qb->execute();
+    }
 }

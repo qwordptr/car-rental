@@ -13,6 +13,9 @@ class Order
 {
     public const PENDING = "pending";
     public const APPROVED = "approved";
+    public const IN_PROGRESS = "in_progress";
+    public const FINISHED_SUCCESSFULLY = "finished_successfully";
+    public const FINISHED_WITH_COMMENTS = "finished_with_comments";
     public const REJECTED = "rejected";
 
     private $id;
@@ -22,6 +25,7 @@ class Order
     private $rentFrom;
     private $rentTo;
     private $daysQuantity;
+    private $comments;
 
     /**
      * @return mixed
@@ -176,5 +180,21 @@ class Order
     public function setRentFrom($rentFrom)
     {
         $this->rentFrom = $rentFrom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param mixed $comments
+     */
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
     }
 }

@@ -32,6 +32,16 @@ class CarController extends Controller
     }
 
     /**
+     * @Route("/admin/car/{id}", name="admin_details_car", requirements={"id": "\d+"})
+     */
+    public function detailsAction(Request $request)
+    {
+        $car = $this->carService->get($request->get('id'));
+
+        return $this->render('car/admin/details.html.twig', ['car' => $car]);
+    }
+
+    /**
      * @Route("/admin/car/create", name="admin_create_car")
      * @param Request $request
      * @param IFileUploader $fileUploader
@@ -56,19 +66,11 @@ class CarController extends Controller
 
             $carService->create($car);
             $this->addFlash('success', 'Nowy samochód został dodany do bazy.');
+
+            return $this->redirectToRoute('admin_browse_car');
         }
 
         return $this->render('car/admin/create.html.twig', ['form' => $form->createView() ]);
-    }
-
-    /**
-     * @Route("/admin/car/{id}", name="admin_details_car", requirements={"id": "\d+"})
-     */
-    public function detailsAction(Request $request)
-    {
-        $car = $this->carService->get($request->get('id'));
-
-        return $this->render('car/admin/details.html.twig', ['car' => $car]);
     }
 
     /**
@@ -78,17 +80,31 @@ class CarController extends Controller
      */
     public function editAction(Request $request)
     {
-        $car = $this->carService->get($request->get('id'));
+
         $carService = $this->carService;
         $photoService = $this->photoService;
+        $car = $carService->get($request->get('id'));
         $form = $this->createForm(CarType::class, $car);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $updatedCar = $form->getData();
+            $car = $form->getData();
+            $photosDiff = $carService->getPhotosDiff($car);
 
+            foreach ($photosDiff['new'] as $photo) {
+                $photoService->create($photo);
+                $car->addPhoto($photo);
+            }
 
+            foreach ($photosDiff['removed'] as $photo) {
+                $photoService->remove($photo);
+            }
+
+            $carService->update($car);
+            $this->addFlash('success', 'Pojazd został edytowany pomyślnie.');
+
+            return $this->redirectToRoute('admin_browse_car');
         }
 
         return $this->render('car/admin/edit.html.twig', ['form' => $form->createView()]);

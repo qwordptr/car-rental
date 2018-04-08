@@ -17,7 +17,7 @@
                                         <h2>{{ notice.price }} zł</h2>
                                     </div>
                                 </div>
-                                <img class="imgur" src="{{ asset('images/audi.jpg') }}" style="width: 100%; height: 100%; border-radius: 5px;"/>
+                                <img class="imgur" src="{{ asset(notice.car.photos.first.path) }}" style="width: 100%; height: 100%; border-radius: 5px;">
                             </div>
 
                             <div class="middle">
@@ -34,12 +34,25 @@
                     </div>
                 {% endfor %}
 
+                {% if notices|length == 0 %}
+                <div class="container">
+                    <div class="col-md-3">
+                    </div>
+
+                    <div class="col-md-6">
+                        <h2>Nie znaleziono żadnych ogłoszeń</h2>
+                        <br><br><br>
+                        <img src="{{ asset('images/notice.png') }}" width="50%">
+                    </div>
+
+                    <div class="col-md-3">
+                    </div>
+                </div>
+                {% endif %}
+
             </div>
         </div>
     </div>
-    <script>
-        $
-    </script>
 
     {# display navigation #}
     {#<div class="navigation">#}

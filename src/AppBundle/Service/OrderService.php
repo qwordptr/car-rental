@@ -83,6 +83,48 @@ class OrderService implements IOrderService
         $this->orderRepository->update($order);
     }
 
+    public function setInProgress($id)
+    {
+        $order = $this->orderRepository->find($id);
+
+        if ($order == null)
+        {
+            throw new NotFoundHttpException("Ogłoszenie nie zostało znalezione.");
+        }
+
+        $order->setStatus(Order::IN_PROGRESS);
+
+        $this->orderRepository->update($order);
+    }
+
+    public function finishSuccessfully($id)
+    {
+        $order = $this->orderRepository->find($id);
+
+        if ($order == null)
+        {
+            throw new NotFoundHttpException("Ogłoszenie nie zostało znalezione.");
+        }
+
+        $order->setStatus(Order::FINISHED_SUCCESSFULLY);
+
+        $this->orderRepository->update($order);
+    }
+
+    public function finishWithComments($id)
+    {
+        $order = $this->orderRepository->find($id);
+
+        if ($order == null)
+        {
+            throw new NotFoundHttpException("Ogłoszenie nie zostało znalezione.");
+        }
+
+        $order->setStatus(Order::FINISHED_WITH_COMMENTS);
+
+        $this->orderRepository->update($order);
+    }
+
     public function reject($id)
     {
         $order = $this->orderRepository->find($id);
@@ -95,6 +137,13 @@ class OrderService implements IOrderService
         $order->setStatus(Order::REJECTED);
 
         $this->orderRepository->update($order);
+    }
+
+    public function getUserOrders($userId)
+    {
+        $orders = $this->orderRepository->getUserOrders($userId);
+
+        return $orders;
     }
 
     public function browseAll()

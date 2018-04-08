@@ -42,10 +42,9 @@ services:
              $orderService: '@AppBundle\Service\OrderService'
              $noticeService: '@AppBundle\Service\NoticeService'
 
-    AppBundle\Controller\Admin\CarController:
+    AppBundle\Controller\ProfileController:
         arguments:
-             $carService: '@AppBundle\Service\CarService'
-             $photoService: '@AppBundle\Service\PhotoService'
+             $orderService: '@AppBundle\Service\OrderService'
 
     #controllers - admin
     AppBundle\Controller\Admin\NoticeController:
@@ -55,6 +54,11 @@ services:
     AppBundle\Controller\Admin\OrderController:
         arguments:
              $orderService: '@AppBundle\Service\OrderService'
+
+    AppBundle\Controller\Admin\CarController:
+        arguments:
+             $carService: '@AppBundle\Service\CarService'
+             $photoService: '@AppBundle\Service\PhotoService'
     #end - controllers -admin
 
     #services
@@ -74,6 +78,7 @@ services:
     AppBundle\Service\CarService:
             arguments:
                 $carRepository: '@AppBundle\Repository\CarRepository'
+                $photoRepository: '@AppBundle\Repository\PhotoRepository'
 
     AppBundle\Service\FileUploader:
             arguments:
@@ -81,7 +86,10 @@ services:
 
     AppBundle\Service\PhotoService:
             arguments:
-                ["%absolute_photos_directory%", "%public_photos_directory%"]
+                $photoDirectory: "%absolute_photos_directory%"
+                $publicPhotoDirectory: "%public_photos_directory%"
+                $photoRepository: '@AppBundle\Repository\PhotoRepository'
+
 
     #repositories
     AppBundle\Repository\UserRepository:
@@ -99,6 +107,10 @@ services:
     AppBundle\Repository\CarRepository:
             factory: 'doctrine.orm.entity_manager:getRepository'
             arguments: ['AppBundle\Entity\Car']
+
+    AppBundle\Repository\PhotoRepository:
+            factory: 'doctrine.orm.entity_manager:getRepository'
+            arguments: ['AppBundle\Entity\Photo']
 
     #serializers
     AppBundle\Subscribers\NoticePostSerializeSubscriber:

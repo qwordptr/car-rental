@@ -64,7 +64,11 @@
                                 {% if order.status == 'pending' %}
                                     <b>Oczekuje na akceptację</b>
                                 {% elseif order.status == 'approved' %}
-                                <b></b>Zaakceptowano</b>
+                                <b></b>Zaakceptowano/pojazd oczekuje</b>
+                                {% elseif order.status == 'in_progress' %}
+                                    <b></b>U klienta</b>
+                                {% elseif order.status == 'finished_successfully' %}
+                                    <b></b>Zakończone pomyślnie</b>
                                 {% else %}
                                     <b>Odrzucono</b>
                                 {% endif %}
@@ -73,45 +77,6 @@
 
                     </tbody>
                 </table>
-            </div>
-        </div>
-
-
-        {#Model#}
-        <!-- Modal -->
-        <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h3 class="modal-title" id="orderModalLabel">Szczegóły wynajmu</h3>
-                    </div>
-                    <div class="modal-body">
-                        <div class="order-dates">
-                            <h4>Data wypożyczenia</h4>
-                            <div class="input-daterange input-group" id="datepicker">
-                                <input id="startdate" type="text" class="input-sm form-control" name="start" />
-                                <span class="input-group-addon">do</span>
-                                <input id="enddate" type="text" class="input-sm form-control" name="end" />
-                            </div>
-                        </div>
-
-                        <div class="order-days">
-                            <h4>Ilość dni: <span id="days">0</span></h4>
-                        </div>
-
-                        <div class="order-cost">
-                            <h2>Koszt: <span id="cost">0.00zł</span></h2>
-                        </div>
-
-                        <div class="order-info">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
-                        <button id="confirm" type="button" class="btn btn-primary disabled">Rezerwacja</button>
-                    </div>
-                </div>
             </div>
         </div>
     {% endblock %}

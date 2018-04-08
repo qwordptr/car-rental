@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping;
 use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 
 /**
@@ -27,8 +28,21 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
 
     public function add(Car $car)
     {
+        try {
             $this->em->persist($car);
             $this->em->flush();
+        } catch (OptimisticLockException $e) {
+        } catch (ORMException $e) {
+        }
+    }
+
+    public function update(Car $car)
+    {
+        try {
+            $this->em->flush();
+        } catch (OptimisticLockException $e) {
+        } catch (ORMException $e) {
+        }
     }
 
     /**
@@ -63,6 +77,5 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
         } catch (ORMException $e) {
 
         }
-
     }
 }

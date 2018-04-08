@@ -15,6 +15,10 @@ interface IOrderService
     public function create($notice, $user, $startDate, $endDate, $days);
     public function get($id);
     public function approve($id);
+    public function setInProgress($id);
+    public function finishSuccessfully($id);
+    public function finishWithComments($id);
+    public function getUserOrders($userId);
     public function reject($id);
     public function browseAll();
 }
