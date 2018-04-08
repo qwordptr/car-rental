@@ -27,10 +27,13 @@ use Symfony\Component\Serializer\SerializerInterface;
 class OrderController extends Controller
 {
     private $orderService;
+    private $carService;
 
-    public function __construct(IOrderService $orderService)
+
+    public function __construct(IOrderService $orderService, ICarService $carService)
     {
         $this->orderService = $orderService;
+        $this->carService = $carService;
     }
 
     /**
@@ -68,7 +71,12 @@ class OrderController extends Controller
      */
     public function rejectAction(Request $request)
     {
+        $order = $this->orderService->get($request->get('id'));
+        $carService = $this->carService;
+
         $this->orderService->reject($request->get('id'));
+        $carService->activate($order->getNotice()->getCar()->getId());
+
         $this->addFlash('success', 'Zamówienie zostało zatwierdzone odrzucone.');
 
         return $this->redirectToRoute('admin_order_details', ['id' => $request->get('id')]);
@@ -94,8 +102,12 @@ class OrderController extends Controller
      */
     public function finishSuccessfullyAction(Request $request)
     {
+        $order = $this->orderService->get($request->get('id'));
+        $carService = $this->carService;
+
         $this->orderService->finishSuccessfully($request->get('id'));
         $this->addFlash('success', 'Zaakceptowano zwrot pomyślnie.');
+        $carService->activate($order->getNotice()->getCar()->getId());
 
         return $this->redirectToRoute('admin_order_details', ['id' => $request->get('id')]);
     }
@@ -107,8 +119,12 @@ class OrderController extends Controller
      */
     public function finishWithCommentsAction(Request $request)
     {
+        $order = $this->orderService->get($request->get('id'));
+        $carService = $this->carService;
+
         $this->orderService->finishWithComments($request->get('id'));
         $this->addFlash('success', 'Zaakceptowano zwrot pomyślnie.');
+        $carService->activate($order->getNotice()->getCar()->getId());
 
         return $this->redirectToRoute('admin_order_details', ['id' => $request->get('id')]);
     }

@@ -31,13 +31,14 @@ class CarService implements ICarService
 
     public function browse()
     {
-        $cars = $this->carRepository->findAll();
+        $cars = $this->carRepository->browse();
 
         return $cars;
     }
 
     public function create(Car $car)
     {
+        $car->setIsActive(true);
         $this->carRepository->add($car);
     }
 
@@ -71,12 +72,13 @@ class CarService implements ICarService
         {
             throw new NotFoundHttpException("Nie znaleziono pojazdu.");
         }
+        $car->setIsActive(false);
 
         foreach ($car->getNotices() as $notice) {
             $notice->setIsActive(false);
         }
 
-        $this->carRepository->remove($car);
+        $this->carRepository->update($car);
     }
 
     public function getPhotosDiff(Car $updatedCar)
@@ -101,5 +103,33 @@ class CarService implements ICarService
         }
 
         return $diff;
+    }
+
+    public function deactivate($id)
+    {
+        $car = $this->carRepository->find($id);
+
+        if ($car == null)
+        {
+            throw new NotFoundHttpException("Nie znaleziono pojazdu.");
+        }
+
+        $car->setIsActive(false);
+
+        $this->carRepository->update($car);
+    }
+
+    public function activate($id)
+    {
+        $car = $this->carRepository->find($id);
+
+        if ($car == null)
+        {
+            throw new NotFoundHttpException("Nie znaleziono pojazdu.");
+        }
+
+        $car->setIsActive(true);
+
+        $this->carRepository->update($car);
     }
 }

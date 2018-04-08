@@ -19,4 +19,6 @@ interface ICarService
     public function getAvailableCars();
     public function get($id);
     public function remove($id);
+    public function deactivate($id);
+    public function activate($id);
 }

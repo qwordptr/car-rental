@@ -107,7 +107,6 @@ class OrderService implements IOrderService
         }
 
         $order->setStatus(Order::FINISHED_SUCCESSFULLY);
-
         $this->orderRepository->update($order);
     }
 

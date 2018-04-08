@@ -23,7 +23,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * @Route("/profile/orders", name="user_orders")
+     * @Route("/profile/orders", name="user_orders", options={"expose"=true})
      */
     public function myOrdersAction()
     {

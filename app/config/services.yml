@@ -41,6 +41,7 @@ services:
         arguments:
              $orderService: '@AppBundle\Service\OrderService'
              $noticeService: '@AppBundle\Service\NoticeService'
+             $carService: '@AppBundle\Service\CarService'
 
     AppBundle\Controller\ProfileController:
         arguments:
@@ -54,6 +55,7 @@ services:
     AppBundle\Controller\Admin\OrderController:
         arguments:
              $orderService: '@AppBundle\Service\OrderService'
+             $carService: '@AppBundle\Service\CarService'
 
     AppBundle\Controller\Admin\CarController:
         arguments:

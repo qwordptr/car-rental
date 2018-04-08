@@ -131,14 +131,23 @@
                         console.log(notice)
                         $('.not-active-list').empty()
                         $.each(notice, function (index, value) {
+                            var orderDetails = value.hasOrder
+                                ? '<a href="'+ Routing.generate('admin_order_details', { id: value.order.id}) +'">Szczegóły</a>'
+                                : 'Bez zamówienia'
+
+                            var orderCreatedAt = value.hasOrder ? value.orderCreatedAt : 'Bez zamówienia'
+                            
                             var carRoute = Routing.generate('admin_details_car', { id: value.car.id });
                             row =
                                 '<tr id="active-'+value.id+'">'+
                                 '<th scope="row">'+(index+1)+'</th>' +
                                 '<td><a href="' + carRoute + ' ">'+value.car.brand + ' ' + value.car.model + ' ' + value.car.engine + '</a></td>' +
-                                '<td>' + value.createdAt+ '</td>' +
-                                '<td>' + value.orderCreatedAt+ '</td>' +
-                                '<td><a href="'+ Routing.generate('admin_order_details', { id: value.order.id}) +'">Szczegóły</a></td>' +
+                                '<td>' + orderCreatedAt+ '</td>' +
+                                '<td>' +
+                                '</td>' +
+                                '<td>' +
+                                    orderDetails +
+                                '</td>' +
                                 '</tr>'
                             $(".not-active-list").append(row)
                         })

@@ -8,6 +8,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Service\Interfaces\ICarService;
 use AppBundle\Service\Interfaces\INoticeService;
 use AppBundle\Service\Interfaces\IOrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,11 +20,17 @@ class OrderController extends Controller
 {
     private $noticeService;
     private $orderService;
+    private $carService;
 
-    public function __construct(INoticeService $noticeService, IOrderService $orderService)
+    public function __construct(
+        INoticeService $noticeService,
+        IOrderService $orderService,
+        ICarService $carService
+    )
     {
         $this->noticeService = $noticeService;
         $this->orderService = $orderService;
+        $this->carService = $carService;
     }
 
     /**
@@ -35,6 +42,7 @@ class OrderController extends Controller
     {
         $noticeService = $this->noticeService;
         $orderService = $this->orderService;
+        $carService = $this->carService;
 
         try {
             $notice = $noticeService->get($request->get('notice'));
@@ -47,6 +55,7 @@ class OrderController extends Controller
             );
 
             $noticeService->deactivate($notice->getId());
+            $carService->deactivate($notice->getCar()->getId());
 
         }catch (\Exception $exception) {
             $response['message'] = $exception->getMessage();

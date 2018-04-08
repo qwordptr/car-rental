@@ -26,6 +26,7 @@ class Car
     private $vin;
     private $airConditioning;
     private $registrationNumber;
+    private $isActive;
 
     //Related entity not domain property
     private $notices;
@@ -290,5 +291,21 @@ class Car
     public function setNotices($notices)
     {
         $this->notices = $notices;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getisActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param mixed $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
     }
 }

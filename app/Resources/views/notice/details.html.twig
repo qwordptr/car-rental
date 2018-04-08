@@ -4,12 +4,23 @@
     <div class="row details">
         <div class="col-lg-4">
             <div>
-                <a href="#{{ notice.car.photos.first.id }}">
-                    <img src="{{ asset(notice.car.photos.first.path) }}" class="thumbnail">
-                </a>
-                <a href="#_" class="lightbox" id="{{ notice.car.photos.first.id }}">
-                    <img src="{{ asset(notice.car.photos.first.path) }}">
-                </a>
+                    {% if notice.car.photos.count != 0 %}
+                        <a href="#{{ notice.car.photos.first.id }}">
+                        <img src="{{ asset(notice.car.photos.first.path) }}" class="thumbnail">
+                        </a>
+
+                        <a href="#_" class="lightbox" id="{{ notice.car.photos.first.id }}">
+                            <img src="{{ asset(notice.car.photos.first.path) }}">
+                        </a>
+                    {% else %}
+                        <a href="#1">
+                            <img src="{{ asset('images/image-not-found.png') }}" class="thumbnail">
+                        </a>
+                            <a href="#_" class="lightbox" id="1">
+                            <img src="{{ asset('images/image-not-found.png') }}">
+                        </a>
+                    {% endif %}
+
             </div>
         </div>
 
@@ -25,7 +36,7 @@
                             Wypełnij formularz wynajmu
                         </button>
                     {% else %}
-                        <a class="btn btn-primary" href="{{ url('register') }}">
+                        <a class="btn btn-primary" href="{{ url('login') }}">
                             Zaloguj się, aby dokonać wynajmu
                         </a>
                     {% endif %}
@@ -113,6 +124,7 @@
 
                 {% endfor %}
             </div>
+            <br><br><br>
         </div>
     </div>
 
@@ -204,14 +216,16 @@
             }
 
             var url = "{{ url('create_order') }}"
+
+            $('#orderModal').modal('hide');
+            window.location.href = Routing.generate('user_orders', { id: '#'});
+
             $.ajax({
                 type: "POST",
                 url: url,
                 data: {notice: {{ notice.id}}, days: days, startDate:startDate, endDate:endDate },
                 success: function (data) {
-                    console.log(data)
-                    $('#orderModal').modal('hide');
-                    window.location.href = Routing.generate('user_orders');
+
                 },
                 error: function (data) {
                     console.log(data)

@@ -17,7 +17,12 @@
                                         <h2>{{ notice.price }} zł</h2>
                                     </div>
                                 </div>
-                                <img class="imgur" src="{{ asset(notice.car.photos.first.path) }}" style="width: 100%; height: 100%; border-radius: 5px;">
+                                {% if notice.car.photos.count != 0 %}
+                                    <img class="imgur" src="{{ asset(notice.car.photos.first.path) }}" style="width: 100%; height: 100%; border-radius: 5px;">
+                                {% else %}
+                                    <img class="imgur" src="{{ asset("images/image-not-found.png") }}" style="width: 100%; height: 100%; border-radius: 5px;">
+                                {% endif %}
+
                             </div>
 
                             <div class="middle">

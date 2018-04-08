@@ -144,3 +144,7 @@ input::-webkit-input-placeholder {
     padding: 40px 40px;
 
 }
+
+.main-content-with-margin {
+     margin-bottom: 80px;
+}

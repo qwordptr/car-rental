@@ -88,6 +88,12 @@ AppBundle\Entity\Car:
             options:
                 fixed: true
 
+        isActive:
+            type: boolean
+            nullable: true
+            options:
+                fixed: true
+
         registrationNumber:
             type: string
             nullable: true

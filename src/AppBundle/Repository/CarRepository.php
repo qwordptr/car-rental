@@ -45,6 +45,16 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
         }
     }
 
+    public function browse()
+    {
+        $em = $this->em;
+        $qb = $this->createQueryBuilder('c')
+            ->where('c.isActive = true')
+            ->getQuery();
+
+        return $qb->execute();
+    }
+
     /**
      * @return mixed
      */
@@ -59,7 +69,8 @@ class CarRepository extends \Doctrine\ORM\EntityRepository
 
         $q1 = $this->createQueryBuilder('c');
         $q1->leftJoin('c.notices', 'n')
-            ->where($q1->expr()->notIn('c.id', $q2));
+            ->where($q1->expr()->notIn('c.id', $q2))
+            ->andWhere('c.isActive = true');
 
         return $q1->getQuery()->getResult();
 

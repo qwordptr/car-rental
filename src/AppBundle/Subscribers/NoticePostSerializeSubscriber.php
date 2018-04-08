@@ -37,6 +37,7 @@ class NoticePostSerializeSubscriber implements \JMS\Serializer\EventDispatcher\E
     {
         $visitor = $event->getVisitor();
         $object = $event->getObject();
+        $visitor->setData('hasOrder', $object->getOrder() != null ? true : false);
         $visitor->setData('createdAt', $object->getCreatedAt()->format("Y-m-d"));
         $visitor->setData('expiredAt', $object->getCreatedAt()->format("Y-m-d"));
         $visitor->setData('orderCreatedAt', $object->getOrder() != null ? $object->getOrder()->getCreatedAt()->format("Y-m-d") : null);

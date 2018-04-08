@@ -3,7 +3,22 @@
 {% block body %}
     <div class="row details">
         <div class="col-lg-4">
-            <img src="{{ asset('images/audi.jpg') }}" style="max-width: 300px;"/>
+            {% if car.photos.count != 0 %}
+                <a href="#{{ car.photos.first.id }}">
+                    <img src="{{ asset(car.photos.first.path) }}" class="thumbnail">
+                </a>
+
+                <a href="#_" class="lightbox" id="{{ car.photos.first.id }}">
+                    <img src="{{ asset(car.photos.first.path) }}">
+                </a>
+            {% else %}
+                <a href="#1">
+                    <img src="{{ asset('images/image-not-found.png') }}" class="thumbnail">
+                </a>
+                <a href="#_" class="lightbox" id="1">
+                    <img src="{{ asset('images/image-not-found.png') }}">
+                </a>
+            {% endif %}
         </div>
 
         <div class="col-lg-8 options">
@@ -78,5 +93,24 @@
                 </div>
             </div>
         </div>
+
+        <div class="gallery">
+            <a data-toggle="collapse" href="#gallery" role="button" aria-expanded="false" aria-controls="gallery"><h3>Galeria</h3></a>
+            <div class="collapse" id="gallery">
+                {% for photo in car.photos %}
+                    <div>
+                        <a href="#{{ photo.id }}">
+                            <img src="{{ asset(photo.path) }}" class="thumbnail">
+                        </a>
+                        <a href="#_" class="lightbox" id="{{ photo.id }}">
+                            <img src="{{ asset(photo.path) }}">
+                        </a>
+                    </div>
+
+                {% endfor %}
+            </div>
+            <br><br><br>
+        </div>
+    </div>
     </div>
 {% endblock %}

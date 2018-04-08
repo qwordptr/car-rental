@@ -120,7 +120,7 @@ class CarController extends Controller
      */
     public function removeAction(Request $request)
     {
-        $response['message'] = 'Ogłosznie zostało usunięte.';
+        $response['message'] = 'Pojazd został usunięty.';
         $response['type'] = 'success';
         $response['id'] = $request->get('id');
         try {
