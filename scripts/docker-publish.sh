@@ -14,7 +14,7 @@ case "$TRAVIS_BRANCH" in
      ;;
 esac
 
-docker login -u "$DOCKER_USERNAME" --password-stdin "$DOCKER_PASSWORD"
+docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 
 docker build -f ./Dockerfile -t car-rental:$DOCKER_TAG . --no-cache
 docker tag  car-rental:$DOCKER_TAG $DOCKER_USERNAME/car-rental:$DOCKER_TAG
