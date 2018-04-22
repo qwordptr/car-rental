@@ -13,8 +13,10 @@ chmod -R 777 /var/www/html/var/.
 echo "Done...!"
 
 echo "Turning off nginx daemon mode..."
-echo "daemon off;" >> /etc/nginx/nginx.conf
+grep -q 'daemon off;' /etc/nginx/nginx.conf || echo 'daemon off;' >> /etc/nginx/nginx.conf
 echo "Done...!"
+
+
 
 echo "Starting nginx server.."
 service nginx start
