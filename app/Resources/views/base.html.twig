@@ -45,6 +45,25 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('browse_notices') }}">Strona Główna</a></li>
                 </ul>
+                <form class="navbar-form navbar-left" role="form" action="{{ path('browse_notices') }}">
+                  <span class="input-group">
+                    <select class="form-control input-md" name="category">
+                        <option disabled selected value> -- Klasa samochodu -- </option>
+                      <option value="small">Auta małe</option>
+                      <option value="middle">Klasa średnia</option>
+                      <option value="top">Klasa wyższa</option>
+                      <option value="suv">SUV</option>
+                    </select>
+                  </span>
+
+                  <span class="input-group">
+                    <input type="text" class="form-control input-md" name="search" placeholder="Wyszukaj..." />
+                  <span class="input-group-btn">
+                  <button class="btn btn-info btn-md" id="addBookButton"><i class="glyphicon glyphicon-search"></i></button>
+                  </span>
+                  </span>
+                </form>
+
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">

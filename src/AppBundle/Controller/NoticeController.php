@@ -8,10 +8,14 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\CarType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Form\NoticeType;
 use AppBundle\Service\Interfaces\INoticeService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -31,7 +35,12 @@ class NoticeController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $notices = $this->noticeService->browse();
+        $defaultData = array('message' => 'Type your message here');
+
+        $search = $request->get('search');
+        $category = $request->get('category');
+
+        $notices = $this->noticeService->browse($search, $category);
 
         return $this->render('notice/browse.html.twig', ['notices' => $notices]);
     }

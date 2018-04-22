@@ -13,6 +13,7 @@ use AppBundle\Entity\Car;
 use AppBundle\Entity\Photo;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -40,6 +41,15 @@ class CarType extends AbstractType
              ->add('vin', TextType::class, ['label' => 'Numer VIN', 'required' => false])
              ->add('registrationNumber', TextType::class, ['label' => 'Numer rejestracyjny', 'required' => false])
              ->add('fuel', TextType::class, ['label' => 'Rodzaj paliwa', 'required' => false])
+             ->add('category', ChoiceType::class, [
+                 'label' => 'Klasa',
+                 'choices'  => [
+                     'Auta małe' => 'small',
+                     'Klasa średnia' => 'middle',
+                     'Klasa wyższa' => 'top',
+                     'SUV' => 'suv'
+                     ]]
+             )
              ->add('photos', CollectionType::class, [
                  'label' => 'Zdjęcia',
                  'entry_type' => PhotoType::class,

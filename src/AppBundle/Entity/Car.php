@@ -28,6 +28,7 @@ class Car
     private $registrationNumber;
     private $isActive;
 
+    private $category;
     //Related entity not domain property
     private $notices;
     private $photos;
@@ -307,5 +308,21 @@ class Car
     public function setIsActive($isActive)
     {
         $this->isActive = $isActive;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
     }
 }

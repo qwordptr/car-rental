@@ -120,7 +120,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group col-sm-8">
+                    <div class="form-group col-sm-4">
                         {{ form_label(form.vin, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
                         <div class="cols-sm-10">
                             <div class="input-group">
@@ -137,6 +137,16 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
                                 {{ form_widget(form.registrationNumber, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-4">
+                        {{ form_label(form.category, NULL, {'label_attr': {'class': 'cols-sm-2 control-label'}}) }}
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                {{ form_widget(form.category, { 'attr': {'class': 'form-control', 'placeholder' : ''} }) }}
                             </div>
                         </div>
                     </div>

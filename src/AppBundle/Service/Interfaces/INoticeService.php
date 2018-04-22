@@ -13,7 +13,7 @@ use AppBundle\Entity\Notice;
 
 interface INoticeService
 {
-    public function browse();
+    public function browse(string $search = null, string $category = null);
     public function browseNotActive();
     public function get($id) : Notice;
     public function create(Notice $notice);

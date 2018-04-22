@@ -23,16 +23,28 @@ class NoticeRepository extends \Doctrine\ORM\EntityRepository
         parent::__construct($em, $class);
     }
 
-    public function browse()
+    public function browse(string $search = null, string $category = null)
     {
-        $em = $this->em;
-
-        $qb = $this->createQueryBuilder('n')
+        $qb2 = $this->createQueryBuilder('n');
+        $qb2->select('n')
             ->andWhere('n.isActive = :state')
-            ->setParameter("state", true)
-            ->getQuery();
+            ->setParameter('state', true);
+        $qb2->join('n.car', 'c');
 
-        return $qb->execute();
+        if ($search != null) {
+                $qb2
+                ->andWhere($qb2->expr()->like('CONCAT(c.brand, c.model)', ':search'))
+                ->setParameter('search', '%'.$search.'%');
+        }
+
+        
+        if ($category != null) {
+            $qb2->andWhere('c.category = :category')
+                ->setParameter('category', $category);
+        }
+        $query = $qb2->getQuery();
+
+        return $query->execute();
 
     }
 

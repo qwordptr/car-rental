@@ -100,4 +100,11 @@ AppBundle\Entity\Car:
             length: 63
             options:
                 fixed: true
+
+        category:
+            type: string
+            nullable: true
+            length: 63
+            options:
+                fixed: true
 lifecycleCallbacks: {  }

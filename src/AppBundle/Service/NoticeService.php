@@ -32,9 +32,9 @@ class NoticeService implements INoticeService
         return $notices;
     }
 
-    public function browse()
+    public function browse(string $search = null, string $category = null)
     {
-        $notices = $this->repository->browse();
+        $notices = $this->repository->browse($search, $category);
 
         return $notices;
     }
